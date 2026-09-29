@@ -25,7 +25,7 @@ export class SocialArea extends Area
 
         this.setLinks()
         this.setFans()
-        this.setOnlyFans()
+        // this.setOnlyFans() // 原作的諧音笑話(OnlyFans = 一圈電風扇),沒有連結,拿掉免得被誤會
         this.setStatue()
         // this.setFWA()
         this.setAchievement()

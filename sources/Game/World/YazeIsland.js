@@ -233,7 +233,7 @@ export class YazeIsland
                 {
                     const x = x0 + SIDEWALK + PITCH / 2 + (i % PER_BLOCK_X) * PITCH
                     const z = z0 + SIDEWALK + PITCH / 2 + Math.floor(i / PER_BLOCK_X) * PITCH
-                    this.building(repo, x, z)
+                    this.building(repo, x, z, i < PER_BLOCK_X ? - 1 : 1)
                 })
             }
         })
@@ -250,7 +250,7 @@ export class YazeIsland
         this.box(leaves, x, z, 0.7, 0.6, 0.7, 2.1)
     }
 
-    building(repo, x, z)
+    building(repo, x, z, side)
     {
         // 樓高看星星,再依名字加一點變化,免得零星的樓全部一樣高
         let hash = 0
@@ -274,7 +274,8 @@ export class YazeIsland
         if(repo.home)
             this.box('#ff4f2b', x + 0.3, z - 0.95, 0.12, 1.4, 0.12, top + 0.12)
 
-        this.buildings.push({ repo, x, z, top, point: null })
+        // 互動點在面向馬路那一側的路邊(北排朝北、南排朝南),車開過去 2.5 公尺內才會亮
+        this.buildings.push({ repo, x, z: z + side * (BUILDING / 2 + SIDEWALK + 0.9), top, point: null })
         this.roofLabel(this.buildings.length - 1, x, z, top + 0.13)
     }
 
@@ -468,9 +469,7 @@ export class YazeIsland
 
     setPortals()
     {
-        // 島上的重生點(按 R 或卡住時會回到最近的重生點)
-        const arrival = this.world(0, 0, 50)
-        this.game.respawns.items.set('yaze', { name: 'yaze', position: new THREE.Vector3(arrival.x, 4, arrival.z), rotation: Math.PI })
+        // 島上的重生點 'yaze' 登記在 Respawns.js(按 R 或卡住時會回到最近的重生點)
 
         // 島上 → 主島
         const back = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.2, 0.25, 24), this.game.materials.list.get('emissivePurpleRadialGradient'))
@@ -536,7 +535,7 @@ export class YazeIsland
             const dx = player.x - (CENTER.x + b.x)
             const dz = player.z - (CENTER.z + b.z)
             if(dx * dx + dz * dz < 36)
-                b.point = this.point(b.x, 1.6, b.z + BUILDING / 2 + 0.2, b.repo.name, () => window.open(b.repo.home || b.repo.url, '_blank'))
+                b.point = this.point(b.x, 1.6, b.z, b.repo.name, () => window.open(b.repo.home || b.repo.url, '_blank'))
         }
     }
 }

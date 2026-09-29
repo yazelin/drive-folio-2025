@@ -53,6 +53,7 @@ export class Map
             { name: 'Projects', respawnName: 'projects', offset: { x: 0, y: -0.02 } },
             { name: 'Social', respawnName: 'social', offset: { x: -0.01, y: -0.04 } },
             { name: 'Time Machine', respawnName: 'timeMachine', offset: { x: 0, y: 0 } },
+            { name: 'Yaze 島', respawnName: 'yaze', offset: { x: 0, y: 0.02 } }, // 島在地圖外,位置會被夾到上緣
         ]
 
         for(const item of this.locations.items)

@@ -35,6 +35,9 @@ export class Respawns
 
             this.items.set(name, item)
         }
+
+        // Yaze 島(北邊海上,YazeIsland.js 的 CENTER + 開場那塊空地);地圖建立得比島早,所以先在這裡登記
+        this.items.set('yaze', { name: 'yaze', position: new THREE.Vector3(0, 4, - 140), rotation: Math.PI })
     }
 
     getByName(name)
