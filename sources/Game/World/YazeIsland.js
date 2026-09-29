@@ -5,6 +5,7 @@ import { Game } from '../Game.js'
 import { InteractivePoints } from '../InteractivePoints.js'
 import { MeshDefaultMaterial } from '../Materials/MeshDefaultMaterial.js'
 import { Trees } from './Trees.js'
+import { YazeCity, CITY } from './YazeCity.js'
 import repoData from '../../../tools/repos.json'
 import cats from '../../../tools/cats.json'
 import lives from '../../../tools/lives.json'
@@ -15,28 +16,11 @@ import lives from '../../../tools/lives.json'
 // 座標:x 往東、z 往南、y 朝上。鏡頭固定從東南方(+x +z)斜看,所以地上的字轉 45 度才會正對畫面。
 
 const CENTER = new THREE.Vector3(0, 0, - 190)   // 島中心(世界座標)
-const HALF = { x: 82, z: 62 }                   // 島的半寬、半深
+const HALF = { x: 82, z: 62 }                   // 島的半寬、南邊到中心的距離
+const NORTH = - 95                               // 島的北岸(往北加大放 repo 城市)
 const FACING = Math.PI * 0.25                   // 正對鏡頭的角度
 const MAP_SPAN = 176                            // 島地圖涵蓋的正方形邊長(公尺)
-
-// 語言 → 樓的顏色
-const LANG_COLOR = {
-    JavaScript: '#f2c94c', TypeScript: '#5390ff', HTML: '#ff8039', CSS: '#b65fff', Python: '#6fcf97',
-    Rust: '#c47a3a', 'C#': '#9b51e0', Shell: '#9aa0a6', Go: '#2ec4b6', Vue: '#42b883'
-}
-const DEFAULT_COLOR = '#e8d5b5'
-
-// repo 城市的格子:每個街區 4 x 2 棟,街區之間是路
-const PER_BLOCK_X = 4
-const PER_BLOCK_Z = 2
-const BUILDING = 2.4
-const PITCH = 3.2
-const SIDEWALK = 0.8
-const ROAD = 5
-const BLOCK_W = PER_BLOCK_X * PITCH + SIDEWALK * 2
-const BLOCK_D = PER_BLOCK_Z * PITCH + SIDEWALK * 2
-const CITY_X0 = - 72                            // 城市西邊界(島的本地座標)
-const CITY_Z0 = - 56                            // 城市北邊界
+const MAP_CZ = (NORTH + 62) / 2                  // 島地圖中心的 z(島不是對稱的)
 
 const FONT = '"Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif'
 
@@ -48,7 +32,6 @@ export class YazeIsland
         this.materials = new Map()
         this.geometries = new Map()      // 顏色 → 要合併的幾何
         this.colliders = []              // 固定不動的碰撞盒
-        this.buildings = []
         this.footprints = []            // 地圖用:每個方塊的俯視輪廓
         this.mapLabels = []             // 地圖上的字
         this.mapPins = []               // 地圖上可以點的地點
@@ -166,19 +149,21 @@ export class YazeIsland
     setGround()
     {
         // 島身(沙色)＋周圍一圈矮牆,免得開進海裡
-        this.box('#b3a044', 0, 0, HALF.x * 2, 3, HALF.z * 2, - 3)
+        const depth = HALF.z - NORTH
+        const midZ = (HALF.z + NORTH) / 2
+        this.box('#b3a044', 0, midZ, HALF.x * 2, 3, depth, - 3)
 
         // 各區底下鋪石板廣場:開場、角色廣場、貓圖牆
         const slab = '#e9c49a'
         this.box(slab, 0, 50, 18, 0.05, 16, 0)
         this.box(slab, - 48, 49, 38, 0.05, 18, 0)
         this.box(slab, 50, 45, 32, 0.05, 18, 0)
-        this.colliders.push({ shape: 'cuboid', parameters: [ HALF.x, 1, HALF.z ], position: this.world(0, - 1, 0), category: 'floor' })
+        this.colliders.push({ shape: 'cuboid', parameters: [ HALF.x, 1, depth / 2 ], position: this.world(0, - 1, midZ), category: 'floor' })
         const wall = '#b86a3c'
-        this.box(wall, 0, - HALF.z, HALF.x * 2, 0.8, 0.6, 0, true)
+        this.box(wall, 0, NORTH, HALF.x * 2, 0.8, 0.6, 0, true)
         this.box(wall, 0, HALF.z, HALF.x * 2, 0.8, 0.6, 0, true)
-        this.box(wall, - HALF.x, 0, 0.6, 0.8, HALF.z * 2, 0, true)
-        this.box(wall, HALF.x, 0, 0.6, 0.8, HALF.z * 2, 0, true)
+        this.box(wall, - HALF.x, midZ, 0.6, 0.8, depth, 0, true)
+        this.box(wall, HALF.x, midZ, 0.6, 0.8, depth, 0, true)
 
         // 島名
         this.floorText([ 'YAZE 島', 'repo 城市・角色廣場・貓圖牆・週三直播路' ], 0, 38, 20, 5)
@@ -186,169 +171,9 @@ export class YazeIsland
 
     setCity()
     {
-        const districts = repoData.districts
-            .map(d => ({ ...d, repos: repoData.repos.filter(r => r.district === d.id) }))
-            .filter(d => d.repos.length)
-        const perBlock = PER_BLOCK_X * PER_BLOCK_Z
-        const columns = Math.max(...districts.map(d => Math.ceil(d.repos.length / perBlock)))
-        const cityW = columns * (BLOCK_W + ROAD) + ROAD
-        const cityD = districts.length * (BLOCK_D + ROAD) + ROAD
-
-        // 柏油路面(整片),街區是墊高的人行道
-        this.box('#4a4058', CITY_X0 + cityW / 2, CITY_Z0 + cityD / 2, cityW, 0.04, cityD, 0)
-
-        // 車道線:每條東西向、南北向的路中間畫虛線
-        for(let row = 0; row <= districts.length; row++)
-        {
-            const z = CITY_Z0 + row * (BLOCK_D + ROAD) + ROAD / 2
-            for(let x = CITY_X0 + 1; x < CITY_X0 + cityW - 1; x += 3)
-                this.box('#fff4e0', x, z, 1.6, 0.05, 0.18, 0)
-        }
-        for(let col = 0; col <= columns; col++)
-        {
-            const x = CITY_X0 + col * (BLOCK_W + ROAD) + ROAD / 2
-            for(let z = CITY_Z0 + 1; z < CITY_Z0 + cityD - 1; z += 3)
-                this.box('#fff4e0', x, z, 0.18, 0.05, 1.6, 0)
-        }
-
-        // 屋頂名牌圖集:每棟樓一格
-        this.setRoofAtlas(repoData.repos)
-
-        districts.forEach((district, row) =>
-        {
-            const z0 = CITY_Z0 + ROAD + row * (BLOCK_D + ROAD)
-
-            // 區名寫在這排最西邊的路口
-            this.floorText([ district.name, `${district.repos.length} 個` ], CITY_X0 - 4, z0 + BLOCK_D / 2, 9, 3)
-            this.pin(district.name, CITY_X0 - 3, z0 + BLOCK_D / 2, CITY_X0 + 16, z0 - ROAD / 2)
-
-            for(let b = 0; b * perBlock < district.repos.length; b++)
-            {
-                const x0 = CITY_X0 + ROAD + b * (BLOCK_W + ROAD)
-                const repos = district.repos.slice(b * perBlock, (b + 1) * perBlock)
-
-                // 人行道
-                this.box('#d9c2a3', x0 + BLOCK_W / 2, z0 + BLOCK_D / 2, BLOCK_W, 0.15, BLOCK_D, 0)
-
-                // 街角的樹
-                for(const [ cx, cz ] of [ [ 0.4, 0.4 ], [ BLOCK_W - 0.4, BLOCK_D - 0.4 ] ])
-                    this.tree(x0 + cx, z0 + cz, (b + row) % 3)
-
-                repos.forEach((repo, i) =>
-                {
-                    const x = x0 + SIDEWALK + PITCH / 2 + (i % PER_BLOCK_X) * PITCH
-                    const z = z0 + SIDEWALK + PITCH / 2 + Math.floor(i / PER_BLOCK_X) * PITCH
-                    this.building(repo, x, z, i < PER_BLOCK_X ? - 1 : 1)
-                })
-            }
-        })
-
-        // 城市入口的說明
-        this.floorText([ 'REPO 城市', `${repoData.repos.length} 個公開 repo：樓越高星越多，顏色是語言`, '開到樓旁邊按 Enter 打開' ], CITY_X0 + 26, CITY_Z0 + cityD + 5, 20, 6)
-    }
-
-    tree(x, z, variant)
-    {
-        const leaves = [ '#ff903f', '#d8cf3b', '#ff9990' ][variant]
-        this.box('#8a5a3c', x, z, 0.25, 1.2, 0.25, 0.15)
-        this.box(leaves, x, z, 1.1, 1.1, 1.1, 1.1)
-        this.box(leaves, x, z, 0.7, 0.6, 0.7, 2.1)
-    }
-
-    building(repo, x, z, side)
-    {
-        // 樓高看星星,再依名字加一點變化,免得零星的樓全部一樣高
-        let hash = 0
-        for(const c of repo.name)
-            hash = (hash * 31 + c.charCodeAt(0)) >>> 0
-        const height = 2 + Math.log2(repo.stars + 1) * 1.5 + (hash % 4) * 0.5
-        const body = LANG_COLOR[repo.lang] || DEFAULT_COLOR
-        const base = 0.15
-
-        this.box(body, x, z, BUILDING, height, BUILDING, base, true)
-
-        // 每層一圈深色窗帶
-        for(let y = base + 0.9; y < base + height - 0.5; y += 1)
-            this.box('#2b2540', x, z, BUILDING + 0.04, 0.3, BUILDING + 0.04, y)
-
-        // 女兒牆、屋頂的冷氣機;有網頁的樓多一支天線
-        const top = base + height
-        this.box('#fff4e0', x, z, BUILDING + 0.1, 0.12, BUILDING + 0.1, top)
-        // 名牌沿畫面水平橫過屋頂,冷氣機與天線放在畫面上方的角落才不會擋字
-        this.box('#9aa0a6', x - 0.75, z - 0.75, 0.5, 0.35, 0.5, top + 0.12)
-        if(repo.home)
-            this.box('#ff4f2b', x + 0.3, z - 0.95, 0.12, 1.4, 0.12, top + 0.12)
-
-        // 互動點在面向馬路那一側的路邊(北排朝北、南排朝南),車開過去 2.5 公尺內才會亮
-        const pz = z + side * (BUILDING / 2 + SIDEWALK + 0.9)
-        this.point(x, 1.6, pz, `${repo.name}（${repo.home ? '網頁' : 'repo'}）`, () => window.open(repo.home || repo.url, '_blank'))
-        this.buildings.push({ repo, x, z, top })
-        this.roofLabel(this.buildings.length - 1, x, z, top + 0.13)
-    }
-
-    setRoofAtlas(repos)
-    {
-        const cellW = 400
-        const cellH = 100
-        const cols = 5
-        const rows = Math.ceil(repos.length / cols)
-        const canvas = document.createElement('canvas')
-        canvas.width = cellW * cols
-        canvas.height = cellH * rows
-        const ctx = canvas.getContext('2d')
-        ctx.fillStyle = '#000'
-        ctx.fillRect(0, 0, canvas.width, canvas.height)
-        ctx.fillStyle = '#fff'
-        ctx.textAlign = 'center'
-        ctx.textBaseline = 'middle'
-
-        // 名牌順序要跟蓋樓的順序一樣(依區、依區內順序)
-        const ordered = repoData.districts.flatMap(d => repos.filter(r => r.district === d.id))
-        ordered.forEach((repo, i) =>
-        {
-            const cx = (i % cols) * cellW + cellW / 2
-            const cy = Math.floor(i / cols) * cellH
-            let size = 44
-            ctx.font = `900 ${size}px ${FONT}`
-            while(ctx.measureText(repo.name).width > cellW - 16 && size > 12)
-            {
-                size -= 2
-                ctx.font = `900 ${size}px ${FONT}`
-            }
-            ctx.fillText(repo.name, cx, cy + cellH * 0.38)
-            if(repo.stars)
-            {
-                ctx.font = `700 30px ${FONT}`
-                ctx.fillText(`★ ${repo.stars}`, cx, cy + cellH * 0.78)
-            }
-        })
-
-        this.roof = { cellW, cellH, cols, rows, width: canvas.width, height: canvas.height, geometries: [] }
-        const map = new THREE.CanvasTexture(canvas)
-        map.anisotropy = 8
-        this.roof.material = new MeshDefaultMaterial({ colorNode: color('#2b2540'), alphaNode: texture(map).r, hasWater: false, transparent: true, depthWrite: false })
-    }
-
-    roofLabel(index, x, z, y)
-    {
-        const r = this.roof
-        const geometry = new THREE.PlaneGeometry(2.6, 0.65)
-        const u0 = (index % r.cols) * r.cellW / r.width
-        const u1 = u0 + r.cellW / r.width
-        const v1 = 1 - Math.floor(index / r.cols) * r.cellH / r.height
-        const v0 = v1 - r.cellH / r.height
-        geometry.setAttribute('uv', new THREE.Float32BufferAttribute([ u0, v1, u1, v1, u0, v0, u1, v0 ], 2))
-        geometry.rotateX(- Math.PI / 2)
-        geometry.rotateY(FACING)
-        geometry.translate(CENTER.x + x, CENTER.y + y, CENTER.z + z)
-        r.geometries.push(geometry)
-
-        if(index === repoData.repos.length - 1)
-        {
-            const mesh = new THREE.Mesh(mergeGeometries(r.geometries), r.material)
-            mesh.renderOrder = 2
-            this.game.scene.add(mesh)
-        }
+        this.city = new YazeCity(this)
+        this.pin('repo 城市', CITY.x0 + 3, CITY.z1 - 3, CITY.x0 + 22, CITY.z1 - 6)
+        this.floorText([ 'REPO 城市', `${repoData.repos.length} 個公開 repo：樓越高星越多，樓頂有綠色燈圈的有網頁`, '開到樓前的白色菱形按 Enter 打開' ], 26, 36, 18, 4.5)
     }
 
     setCharacters()
@@ -510,12 +335,12 @@ export class YazeIsland
     {
         // 借原作的三種樹(會隨風擺、車靠近會透明),種在城市外圍,島才不會像沙漠
         const spots = []
-        for(let x = - 76; x <= 70; x += 7)
-            spots.push([ x, - 59.5 ])                                   // 北岸一排
+        for(let z = NORTH + 4; z <= 26; z += 8)
+            spots.push([ 66, z ])                                       // 城市與直播路之間一排
         for(let x = - 78; x <= 66; x += 8)
             if(x < - 8 || x > 12)
                 spots.push([ x, 59 ])                                   // 南岸一排(避開傳送台)
-        spots.push([ - 22, 34 ], [ - 8, 31 ], [ 12, 33 ], [ 26, 31 ], [ 38, 34 ], [ - 72, 36 ], [ - 30, 54 ], [ 20, 54 ])
+        spots.push([ - 22, 36 ], [ - 8, 35 ], [ 12, 35 ], [ 42, 35 ], [ - 72, 36 ], [ - 30, 54 ], [ 20, 54 ])
 
         const kinds = [
             [ 'Island Oak', this.game.resources.oakTreesVisualModel.scene, '#b4b536', '#d8cf3b' ],
@@ -558,6 +383,7 @@ export class YazeIsland
         const ctx = canvas.getContext('2d')
         const scale = size / MAP_SPAN
         const toPx = (v) => (v + MAP_SPAN / 2) * scale
+        const toPy = (v) => (v - MAP_CZ + MAP_SPAN / 2) * scale
 
         ctx.fillStyle = '#2b5d7a'
         ctx.fillRect(0, 0, size, size)
@@ -569,7 +395,7 @@ export class YazeIsland
         for(const [ hex, x, z, w, d ] of list)
         {
             ctx.fillStyle = hex
-            ctx.fillRect(toPx(x - w / 2), toPx(z - d / 2), w * scale, d * scale)
+            ctx.fillRect(toPx(x - w / 2), toPy(z - d / 2), w * scale, d * scale)
         }
 
         ctx.textAlign = 'center'
@@ -580,8 +406,8 @@ export class YazeIsland
         ctx.fillStyle = '#ffffff'
         for(const [ text, x, z ] of this.mapLabels)
         {
-            ctx.strokeText(text, toPx(x), toPx(z))
-            ctx.fillText(text, toPx(x), toPx(z))
+            ctx.strokeText(text, toPx(x), toPy(z))
+            ctx.fillText(text, toPx(x), toPy(z))
         }
 
         this.mapUrl = canvas.toDataURL('image/webp', 0.9)
@@ -593,12 +419,12 @@ export class YazeIsland
     {
         return {
             x: Math.min(Math.max((x - CENTER.x) / MAP_SPAN + 0.5, 0), 1),
-            y: Math.min(Math.max((z - CENTER.z) / MAP_SPAN + 0.5, 0), 1)
+            y: Math.min(Math.max((z - CENTER.z - MAP_CZ) / MAP_SPAN + 0.5, 0), 1)
         }
     }
 
     isOn(position)
     {
-        return Math.abs(position.x - CENTER.x) < MAP_SPAN / 2 && Math.abs(position.z - CENTER.z) < MAP_SPAN / 2
+        return Math.abs(position.x - CENTER.x) < MAP_SPAN / 2 && Math.abs(position.z - CENTER.z - MAP_CZ) < MAP_SPAN / 2
     }
 }

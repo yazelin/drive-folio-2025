@@ -23,7 +23,7 @@
 
 Yaze 島（開場 YAZE 左邊的紫色傳送台按 Enter，或打開地圖點上緣的「Yaze 島」）：
 
-- **repo 城市**：179 個公開 repo 一個一棟樓，每 8 棟一個街區，一區一條街；樓越高星越多、顏色是主要語言、有天線的有網頁。每棟樓前的路邊有一個白色菱形，開過去會顯示名字，後面標「網頁」的開 GitHub Pages、標「repo」的開 repo 頁，按 Enter 打開（`tools/fetch_repos.py` 產資料）
+- **repo 城市**：179 個公開 repo 一個一棟樓，4 棟一個街區，最近有更新的排在北邊。有馬路、斑馬線、路燈、遮雨棚，屋頂有招牌；樓越高星越多，樓頂有綠色燈圈的有 GitHub Pages。車開到樓後面時，擋住車的樓會挖一個洞。每棟樓前的路邊有一個白色菱形，開過去按 Enter：有網頁的開網頁，沒有的開 repo 頁（`tools/fetch_repos.py` 產資料）。城市的做法搬自 2026-09-29 從零實測時另一個 agent 做的版本
 - **角色廣場**：格莉奇、黑洞先生、Mori、優理的立牌，介紹照角色頁的副標
 - **catime 貓圖牆**：最新 12 隻 AI 貓（`tools/fetch_cats.py` 抓的快照）
 - **島的地圖**：人在島上時按 M 或右上角的地圖，會換成島的平面圖，點各區的標記就能傳送過去
@@ -54,7 +54,7 @@ cp .env.example .env
 # 社群連結：sources/data/social.js
 # 職涯：改 tools/make_career.py 裡的文字，再跑 python3 tools/make_career.py
 # 開場的名字：sources/Game/World/Areas/LandingArea.js 的 letters
-# Yaze 島：sources/Game/World/YazeIsland.js；資料在 tools/（repos.json、cats.json、lives.json）
+# Yaze 島：sources/Game/World/YazeIsland.js（repo 城市在 YazeCity.js）；資料在 tools/（repos.json、cats.json、lives.json）
 npm run dev
 ```
 
