@@ -17,6 +17,7 @@ import lives from '../../../tools/lives.json'
 const CENTER = new THREE.Vector3(0, 0, - 190)   // 島中心(世界座標)
 const HALF = { x: 82, z: 62 }                   // 島的半寬、半深
 const FACING = Math.PI * 0.25                   // 正對鏡頭的角度
+const MAP_SPAN = 176                            // 島地圖涵蓋的正方形邊長(公尺)
 
 // 語言 → 樓的顏色
 const LANG_COLOR = {
@@ -48,6 +49,9 @@ export class YazeIsland
         this.geometries = new Map()      // 顏色 → 要合併的幾何
         this.colliders = []              // 固定不動的碰撞盒
         this.buildings = []
+        this.footprints = []            // 地圖用:每個方塊的俯視輪廓
+        this.mapLabels = []             // 地圖上的字
+        this.mapPins = []               // 地圖上可以點的地點
 
         this.setGround()
         this.setCity()
@@ -58,7 +62,6 @@ export class YazeIsland
         this.setTrees()
         this.flush()
 
-        this.game.ticker.events.on('tick', () => this.update(), 10)
     }
 
     // 島上座標 → 世界座標
@@ -79,6 +82,7 @@ export class YazeIsland
     {
         const geometry = new THREE.BoxGeometry(w, h, d)
         geometry.translate(CENTER.x + x, CENTER.y + y + h / 2, CENTER.z + z)
+        this.footprints.push([ hex, x, z, w, d, y + h ])
         if(!this.geometries.has(hex))
             this.geometries.set(hex, [])
         this.geometries.get(hex).push(geometry)
@@ -216,6 +220,7 @@ export class YazeIsland
 
             // 區名寫在這排最西邊的路口
             this.floorText([ district.name, `${district.repos.length} 個` ], CITY_X0 - 4, z0 + BLOCK_D / 2, 9, 3)
+            this.pin(district.name, CITY_X0 - 3, z0 + BLOCK_D / 2, CITY_X0 + 16, z0 - ROAD / 2)
 
             for(let b = 0; b * perBlock < district.repos.length; b++)
             {
@@ -275,7 +280,9 @@ export class YazeIsland
             this.box('#ff4f2b', x + 0.3, z - 0.95, 0.12, 1.4, 0.12, top + 0.12)
 
         // 互動點在面向馬路那一側的路邊(北排朝北、南排朝南),車開過去 2.5 公尺內才會亮
-        this.buildings.push({ repo, x, z: z + side * (BUILDING / 2 + SIDEWALK + 0.9), top, point: null })
+        const pz = z + side * (BUILDING / 2 + SIDEWALK + 0.9)
+        this.point(x, 1.6, pz, `${repo.name}（${repo.home ? '網頁' : 'repo'}）`, () => window.open(repo.home || repo.url, '_blank'))
+        this.buildings.push({ repo, x, z, top })
         this.roofLabel(this.buildings.length - 1, x, z, top + 0.13)
     }
 
@@ -358,6 +365,7 @@ export class YazeIsland
         const z = 46
 
         this.floorText([ '角色廣場', '開到她們旁邊按 Enter 看角色介紹' ], x0 + 12, z - 7, 14, 3.5)
+        this.pin('角色廣場', x0 + 12, z - 3)
 
         characters.forEach((c, i) =>
         {
@@ -431,6 +439,7 @@ export class YazeIsland
         })
 
         this.floorText([ 'catime 貓圖牆', `每小時自動生一隻 AI 貓，這裡是最新 ${cats.length} 隻` ], cx + 4, cz + 5, 14, 3.5)
+        this.pin('貓圖牆', cx + 2, cz + 6)
         this.point(cx + 3, 2, cz + 3, 'catime 貓圖庫', () => window.open('https://yazelin.github.io/catime/', '_blank'))
     }
 
@@ -443,6 +452,7 @@ export class YazeIsland
 
         this.box('#4a4058', x, z0 + step * (lives.length - 1) / 2, 6, 0.04, Math.abs(step) * lives.length + 4, 0)
         this.floorText([ '週三直播路', `${lives.length} 場，每週三晚上八點` ], x - 1, z0 + 7, 10, 2.5, '#fff4e0')
+        this.pin('週三直播路', x, z0 + 4)
 
         const geometry = new THREE.BoxGeometry(0.7, 2, 0.7)
         lives.forEach((live, i) =>
@@ -472,6 +482,7 @@ export class YazeIsland
         // 島上的重生點 'yaze' 登記在 Respawns.js(按 R 或卡住時會回到最近的重生點)
 
         // 島上 → 主島
+        this.pin('開場', 0, 48)
         const back = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.2, 0.25, 24), this.game.materials.list.get('emissivePurpleRadialGradient'))
         back.position.copy(this.world(4, 0.12, 54))
         this.game.scene.add(back)
@@ -524,18 +535,70 @@ export class YazeIsland
         kinds.forEach(([ name, model, a, b ], i) => new Trees(name, model, groups[i], a, b))
     }
 
-    update()
+    // 地圖上可以點的地點:登記成重生點,地圖點下去就走原作的重生流程
+    pin(name, x, z, labelX = x, labelZ = z - 6)
     {
-        // repo 城市的樓太多,互動點等車開到旁邊才建立
-        const player = this.game.player.position
-        for(const b of this.buildings)
+        const key = `yaze${this.mapPins.length}`
+        const position = this.world(x, 4, z)
+        this.game.respawns.items.set(key, { name: key, position, rotation: Math.PI })
+        this.mapPins.push({ name, key, x, z })
+        this.mapLabels.push([ name, labelX, labelZ ])
+    }
+
+    // 島的俯視圖:把蓋島用的方塊依高度由低到高畫出來。回傳圖片網址給 Map.js
+    getMapUrl()
+    {
+        if(this.mapUrl)
+            return this.mapUrl
+
+        const size = 1024
+        const canvas = document.createElement('canvas')
+        canvas.width = size
+        canvas.height = size
+        const ctx = canvas.getContext('2d')
+        const scale = size / MAP_SPAN
+        const toPx = (v) => (v + MAP_SPAN / 2) * scale
+
+        ctx.fillStyle = '#2b5d7a'
+        ctx.fillRect(0, 0, size, size)
+
+        const detail = [ '#2b2540', '#fff4e0', '#9aa0a6' ]
+        const list = [ ...this.footprints ]
+            .filter(([ hex, x, z, w ]) => !(detail.includes(hex) && w > 0.3 && w < 2.6))
+            .sort((a, b) => a[5] - b[5])
+        for(const [ hex, x, z, w, d ] of list)
         {
-            if(b.point)
-                continue
-            const dx = player.x - (CENTER.x + b.x)
-            const dz = player.z - (CENTER.z + b.z)
-            if(dx * dx + dz * dz < 36)
-                b.point = this.point(b.x, 1.6, b.z, b.repo.name, () => window.open(b.repo.home || b.repo.url, '_blank'))
+            ctx.fillStyle = hex
+            ctx.fillRect(toPx(x - w / 2), toPx(z - d / 2), w * scale, d * scale)
         }
+
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'middle'
+        ctx.font = `900 22px ${FONT}`
+        ctx.lineWidth = 5
+        ctx.strokeStyle = 'rgba(30, 20, 40, 0.85)'
+        ctx.fillStyle = '#ffffff'
+        for(const [ text, x, z ] of this.mapLabels)
+        {
+            ctx.strokeText(text, toPx(x), toPx(z))
+            ctx.fillText(text, toPx(x), toPx(z))
+        }
+
+        this.mapUrl = canvas.toDataURL('image/webp', 0.9)
+        return this.mapUrl
+    }
+
+    // 世界座標 → 島地圖上的比例(0~1)
+    worldToMap(x, z)
+    {
+        return {
+            x: Math.min(Math.max((x - CENTER.x) / MAP_SPAN + 0.5, 0), 1),
+            y: Math.min(Math.max((z - CENTER.z) / MAP_SPAN + 0.5, 0), 1)
+        }
+    }
+
+    isOn(position)
+    {
+        return Math.abs(position.x - CENTER.x) < MAP_SPAN / 2 && Math.abs(position.z - CENTER.z) < MAP_SPAN / 2
     }
 }

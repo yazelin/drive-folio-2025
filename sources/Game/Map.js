@@ -19,6 +19,7 @@ export class Map
             if(!this.initiated)
                 this.init()
 
+            this.updateMode()
             this.texture.update()
         })
     }
@@ -56,6 +57,7 @@ export class Map
             { name: 'Yaze 島', respawnName: 'yaze', offset: { x: 0, y: 0.02 } }, // 島在地圖外,位置會被夾到上緣
         ]
 
+        this.locations.elements = []
         for(const item of this.locations.items)
         {
             const respawn = this.game.respawns.getByName(item.respawnName)
@@ -77,6 +79,7 @@ export class Map
             element.style.zIndex = Math.round(mapPosition.y * 1000)
             
             this.element.append(element)
+            this.locations.elements.push(element)
 
             element.addEventListener('click', () =>
             {
@@ -89,6 +92,49 @@ export class Map
         }
     }
     
+    // Yaze 島的地點(島比地圖晚建立,第一次在島上開地圖才做)
+    setIslandLocations()
+    {
+        const island = this.game.world.yazeIsland
+        this.islandLocations = []
+        for(const pin of island.mapPins)
+        {
+            const position = this.game.respawns.getByName(pin.key).position
+            const mapPosition = island.worldToMap(position.x, position.z)
+            const element = document.createElement('div')
+            element.classList.add('location')
+            element.innerHTML = `<div class="pin"></div><div class="name-container"><div class="name">${pin.name}</div></div>`
+            element.style.left = `${mapPosition.x * 100}%`
+            element.style.top = `${mapPosition.y * 100}%`
+            element.style.zIndex = Math.round(mapPosition.y * 1000)
+            this.element.append(element)
+            this.islandLocations.push(element)
+
+            element.addEventListener('click', () =>
+            {
+                this.game.player.respawn(pin.key, () =>
+                {
+                    this.game.view.focusPoint.isTracking = true
+                })
+                this.game.modals.close()
+            })
+        }
+    }
+
+    // 人在 Yaze 島上就換成島的地圖
+    updateMode()
+    {
+        const island = this.game.world.yazeIsland
+        this.onIsland = !!island && island.isOn(this.game.player.position)
+        if(this.onIsland && !this.islandLocations)
+            this.setIslandLocations()
+        for(const element of this.locations.elements)
+            element.style.display = this.onIsland ? 'none' : ''
+        for(const element of this.islandLocations || [])
+            element.style.display = this.onIsland ? '' : 'none'
+        this.player.roundedPosition.x = NaN
+    }
+
     setPlayer()
     {
         this.player = {}
@@ -109,7 +155,7 @@ export class Map
         
         this.texture.update = () =>
         {
-            const url = this.game.dayCycles.intervalEvents.get('night').inInterval ? 'ui/map/map-night.webp' : 'ui/map/map-day.webp'
+            const url = this.onIsland ? this.game.world.yazeIsland.getMapUrl() : this.game.dayCycles.intervalEvents.get('night').inInterval ? 'ui/map/map-night.webp' : 'ui/map/map-day.webp'
 
             if(url !== this.texture.previousUrl)
             {
@@ -182,7 +228,7 @@ export class Map
             this.player.roundedPosition.x = playerRoundedX
             this.player.roundedPosition.y = playerRoundedY
 
-            const playerCoordinates = this.worldToMap(this.player.roundedPosition)
+            const playerCoordinates = this.onIsland ? this.game.world.yazeIsland.worldToMap(playerRoundedX, playerRoundedY) : this.worldToMap(this.player.roundedPosition)
             const x = Math.round(playerCoordinates.x * 1000) / 10
             const y = Math.round(playerCoordinates.y * 1000) / 10
 
