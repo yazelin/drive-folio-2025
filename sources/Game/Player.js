@@ -481,6 +481,14 @@ export class Player
                 respawn.position,
                 respawn.rotation
             )
+
+            // 傳送時鏡頭直接跳到車上並恢復追車(原作只在附近重生,鏡頭慢慢滑過去沒關係;
+            // 往返 Yaze 島一次一百多公尺,滑過去會很久、途中也看不到車)
+            const focusPoint = this.game.view.focusPoint
+            focusPoint.isTracking = true
+            focusPoint.trackedPosition.set(respawn.position.x, 0, respawn.position.z)
+            focusPoint.position.copy(focusPoint.trackedPosition)
+            focusPoint.smoothedPosition.copy(focusPoint.trackedPosition)
             
             this.state = Player.STATE_DEFAULT
             this.game.overlay.hide()
