@@ -1,0 +1,1821 @@
+{
+ "user": "yazelin",
+ "districts": [
+  {
+   "id": "company",
+   "name": "公司與工業"
+  },
+  {
+   "id": "characters",
+   "name": "角色宇宙"
+  },
+  {
+   "id": "games",
+   "name": "遊戲與 3D"
+  },
+  {
+   "id": "teaching",
+   "name": "教學與範本"
+  },
+  {
+   "id": "agents",
+   "name": "Agent 與開發工具"
+  },
+  {
+   "id": "tools",
+   "name": "網頁小工具"
+  }
+ ],
+ "repos": [
+  {
+   "name": "battlefield-editor",
+   "desc": "AI 戰場編輯器 — 資料驅動的單檔 3D 戰場引擎;每場戰役是一份 package(赤壁、官渡、垓下、淝水範例)",
+   "stars": 45,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/battlefield-editor",
+   "home": "https://yazelin.github.io/battlefield-editor/",
+   "pushed": "2026-08-18",
+   "district": "games"
+  },
+  {
+   "name": "ching-tech-os",
+   "desc": "擎添工業的內部管理系統，以 Web 桌面介面整合 AI、專案、知識庫、Linebot、Telegrambot等功能。",
+   "stars": 32,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/ching-tech-os",
+   "home": "",
+   "pushed": "2026-09-18",
+   "district": "company"
+  },
+  {
+   "name": "ipas-ai-quiz",
+   "desc": "iPAS AI 應用規劃師線上模擬考練習(611 題歷屆考古題,純前端 + Cloudflare 同步)",
+   "stars": 26,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/ipas-ai-quiz",
+   "home": "https://yazelin.github.io/ipas-ai-quiz/",
+   "pushed": "2026-09-24",
+   "district": "tools"
+  },
+  {
+   "name": "line-chat-maker",
+   "desc": "免費離線的 LINE 風格對話截圖產生器(僅供創作示意)— WYSIWYG、PNG 匯出、PWA、AI skill",
+   "stars": 21,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/line-chat-maker",
+   "home": "https://yazelin.github.io/line-chat-maker/",
+   "pushed": "2026-08-19",
+   "district": "tools"
+  },
+  {
+   "name": "slide-deck-skill",
+   "desc": "🎬 跨平台專業 16:9 網頁簡報與講義製作 Skill（支援雙螢幕同步主控台、PACE節奏計時、自動化驗收與 PDF 匯出）",
+   "stars": 16,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/slide-deck-skill",
+   "home": "",
+   "pushed": "2026-09-09",
+   "district": "agents"
+  },
+  {
+   "name": "mori-desktop",
+   "desc": "森林精靈 Mori 的桌面身體 — Tauri 2 + Rust + React 的個人 AI 管家",
+   "stars": 15,
+   "lang": "Rust",
+   "url": "https://github.com/yazelin/mori-desktop",
+   "home": "https://yazelin.github.io/mori-desktop/",
+   "pushed": "2026-09-15",
+   "district": "characters"
+  },
+  {
+   "name": "line-sticker-studio",
+   "desc": "Upload one image → AI generates 8 LINE stickers → download ZIP, ready for LINE C",
+   "stars": 13,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/line-sticker-studio",
+   "home": "https://yazelin.github.io/line-sticker-studio/",
+   "pushed": "2026-09-11",
+   "district": "tools"
+  },
+  {
+   "name": "jaba-ai",
+   "desc": "呷爸 (Jaba) 是一個整合 AI 對話功能的 LINE Bot 群組點餐系統，讓群組成員可以透過自然語言進行點餐，並提供即時看板和管理後台。",
+   "stars": 10,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/jaba-ai",
+   "home": "",
+   "pushed": "2026-05-26",
+   "district": "company"
+  },
+  {
+   "name": "ai-font-styles",
+   "desc": "100+ 種 AI 生圖字體風格名稱總整理,每日自動擴充 ( 實際渲染圖卡 + 一鍵複製提示詞 ) , 原始參考資料來源 : Facebook 數位生活小記 阿",
+   "stars": 9,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/ai-font-styles",
+   "home": "https://yazelin.github.io/ai-font-styles/",
+   "pushed": "2026-09-28",
+   "district": "tools"
+  },
+  {
+   "name": "catime",
+   "desc": "AI-generated hourly cat images - a new cat every hour!",
+   "stars": 9,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/catime",
+   "home": "https://yazelin.github.io/catime",
+   "pushed": "2026-09-29",
+   "district": "characters"
+  },
+  {
+   "name": "mori-sprite-studio",
+   "desc": "Web tool to produce .moripack.zip character packs for mori-desktop",
+   "stars": 7,
+   "lang": "TypeScript",
+   "url": "https://github.com/yazelin/mori-sprite-studio",
+   "home": "https://mori-sprite-studio.vercel.app",
+   "pushed": "2026-09-03",
+   "district": "characters"
+  },
+  {
+   "name": "usc2019-RobotSim",
+   "desc": "實踐-機器手臂程式設計",
+   "stars": 7,
+   "lang": "",
+   "url": "https://github.com/yazelin/usc2019-RobotSim",
+   "home": "https://yazelin.github.io/usc2019-RobotSim/",
+   "pushed": "2021-11-02",
+   "district": "teaching"
+  },
+  {
+   "name": "mori-canvas",
+   "desc": "Talk, or paste a transcript — AI turns it into sticky notes and a relationship d",
+   "stars": 6,
+   "lang": "Rust",
+   "url": "https://github.com/yazelin/mori-canvas",
+   "home": "https://yazelin.github.io/mori-canvas/",
+   "pushed": "2026-08-18",
+   "district": "characters"
+  },
+  {
+   "name": "telegram-bot",
+   "desc": "練習使用 Python + python-telegram-bot + Claude CLI 建立的智能 Telegram Bot，支援 AI 對話、圖片生成等",
+   "stars": 6,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/telegram-bot",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "agents"
+  },
+  {
+   "name": "AgentPulse",
+   "desc": "Cross-platform Dynamic Island monitor for AI coding assistant sessions (Claude, ",
+   "stars": 5,
+   "lang": "Rust",
+   "url": "https://github.com/yazelin/AgentPulse",
+   "home": "https://yazelin.github.io/AgentPulse/",
+   "pushed": "2026-08-18",
+   "district": "agents"
+  },
+  {
+   "name": "jaba",
+   "desc": "jaba 呷爸 AI 午餐訂便當系統 - 用自然語言輕鬆訂餐",
+   "stars": 5,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/jaba",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "company"
+  },
+  {
+   "name": "tourist-origin-radar",
+   "desc": "Demo dashboard for inbound tourist origin market share, built for wish-pool wish",
+   "stars": 5,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/tourist-origin-radar",
+   "home": "https://tourist-origin-radar.vercel.app",
+   "pushed": "2026-09-02",
+   "district": "tools"
+  },
+  {
+   "name": "mandarin-taigi",
+   "desc": "離線優先的國語／臺灣台語詞語、臺羅、腔口與官方發音對照工具",
+   "stars": 4,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/mandarin-taigi",
+   "home": "https://yazelin.github.io/mandarin-taigi/",
+   "pushed": "2026-08-19",
+   "district": "tools"
+  },
+  {
+   "name": "roll-formosa",
+   "desc": "滾・福爾摩沙 Roll Formosa — 台灣風味的 Katamari 滾物成球遊戲,從圖釘滾到台北 101。Neon night-market Taiwan",
+   "stars": 3,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/roll-formosa",
+   "home": "https://yazelin.github.io/roll-formosa/",
+   "pushed": "2026-08-19",
+   "district": "games"
+  },
+  {
+   "name": "ai-chant-magic",
+   "desc": "真。AI。咏唱魔法 — 語音咏唱俯視角Survev網頁遊戲 (Phaser + TypeScript). 喊出法術名稱即時施法.",
+   "stars": 2,
+   "lang": "TypeScript",
+   "url": "https://github.com/yazelin/ai-chant-magic",
+   "home": "https://yazelin.github.io/ai-chant-magic/",
+   "pushed": "2026-08-19",
+   "district": "games"
+  },
+  {
+   "name": "buddy-evolution",
+   "desc": "",
+   "stars": 2,
+   "lang": "TypeScript",
+   "url": "https://github.com/yazelin/buddy-evolution",
+   "home": "https://buddy-evolution-web.vercel.app",
+   "pushed": "2026-06-11",
+   "district": "characters"
+  },
+  {
+   "name": "claude-code-acp-py",
+   "desc": "ACP-compatible agent for Claude Code (Python version)",
+   "stars": 2,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/claude-code-acp-py",
+   "home": "",
+   "pushed": "2026-04-08",
+   "district": "agents"
+  },
+  {
+   "name": "codex-auth-switcher",
+   "desc": "Small shell tooling for managing multiple Codex auth profiles",
+   "stars": 2,
+   "lang": "PowerShell",
+   "url": "https://github.com/yazelin/codex-auth-switcher",
+   "home": "https://yazelin.github.io/codex-auth-switcher/",
+   "pushed": "2026-08-18",
+   "district": "agents"
+  },
+  {
+   "name": "codex-imagegen-skill",
+   "desc": "A Claude Code skill that generates images via Codex CLI's $imagegen, using your ",
+   "stars": 2,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/codex-imagegen-skill",
+   "home": "https://yazelin.github.io/codex-imagegen-skill/",
+   "pushed": "2026-08-18",
+   "district": "agents"
+  },
+  {
+   "name": "emoji-slot-machine",
+   "desc": "3×3 emoji grid → looping slot-machine video for Facebook sharing",
+   "stars": 2,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/emoji-slot-machine",
+   "home": "https://yazelin.github.io/emoji-slot-machine/",
+   "pushed": "2026-09-07",
+   "district": "games"
+  },
+  {
+   "name": "erpnext-mcp",
+   "desc": "MCP Server for ERPNext REST API",
+   "stars": 2,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/erpnext-mcp",
+   "home": "",
+   "pushed": "2026-05-25",
+   "district": "company"
+  },
+  {
+   "name": "larch-vn-skill",
+   "desc": "在 Larch 平台做視覺小說的 skill：實測出來的卡片欄位、立繪動畫、轉場、標題畫面與踩過的坑",
+   "stars": 2,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/larch-vn-skill",
+   "home": "",
+   "pushed": "2026-09-26",
+   "district": "agents"
+  },
+  {
+   "name": "nanobanana",
+   "desc": "Auto-install script for Nano Banana AI image generation MCP server | Nano Banana",
+   "stars": 2,
+   "lang": "Shell",
+   "url": "https://github.com/yazelin/nanobanana",
+   "home": "",
+   "pushed": "2026-01-15",
+   "district": "agents"
+  },
+  {
+   "name": "taigi-caption",
+   "desc": "對手機講台語,螢幕即時顯示繁體中文字,讓不懂台語的人當場讀。自架 Breeze-ASR-26 後端加 PWA 前端。",
+   "stars": 2,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/taigi-caption",
+   "home": "https://yazelin.github.io/taigi-caption/",
+   "pushed": "2026-08-19",
+   "district": "tools"
+  },
+  {
+   "name": "taiwanize",
+   "desc": "台灣化轉換器 — 簡體轉台灣正體+在地用語(軟件→軟體、視頻→影片)。純前端 OpenCC,文字不離開瀏覽器。",
+   "stars": 2,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/taiwanize",
+   "home": "https://yazelin.github.io/taiwanize/",
+   "pushed": "2026-08-18",
+   "district": "tools"
+  },
+  {
+   "name": "wish-pool",
+   "desc": "AI 社團公開許願池 — AI 對話式引導把願望講清楚 + 協作公開牆",
+   "stars": 2,
+   "lang": "TypeScript",
+   "url": "https://github.com/yazelin/wish-pool",
+   "home": "https://yazelin.github.io/wish-pool/",
+   "pushed": "2026-08-21",
+   "district": "tools"
+  },
+  {
+   "name": "agent-skill-starter",
+   "desc": "Learn to build an Agent Skill — from ad-hoc prompting to a packaged, auto-trigge",
+   "stars": 1,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/agent-skill-starter",
+   "home": "",
+   "pushed": "2026-07-06",
+   "district": "teaching"
+  },
+  {
+   "name": "ai-marketing-pages-course",
+   "desc": "AI 互動行銷頁線上課 — 研究、決策、課程內容與 demo 全記錄",
+   "stars": 1,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/ai-marketing-pages-course",
+   "home": "https://yazelin.github.io/ai-marketing-pages-course/",
+   "pushed": "2026-09-28",
+   "district": "teaching"
+  },
+  {
+   "name": "ai-tarot-companion",
+   "desc": "AI 塔羅心靈陪伴站 — 用科技與溫暖對話陪伴社區長者",
+   "stars": 1,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/ai-tarot-companion",
+   "home": "",
+   "pushed": "2026-08-19",
+   "district": "tools"
+  },
+  {
+   "name": "asia2020-RobotLeapMotion",
+   "desc": "亞洲大學-創意設計學院人工智慧工作坊 Leap Motion與機器手臂",
+   "stars": 1,
+   "lang": "",
+   "url": "https://github.com/yazelin/asia2020-RobotLeapMotion",
+   "home": "https://yazelin.github.io/asia2020-RobotLeapMotion/",
+   "pushed": "2026-06-11",
+   "district": "teaching"
+  },
+  {
+   "name": "awei-voice",
+   "desc": "阿瑋好聲音：長輩友善的台灣國語／台語文字轉語音 PWA",
+   "stars": 1,
+   "lang": "TypeScript",
+   "url": "https://github.com/yazelin/awei-voice",
+   "home": "https://yazelin.github.io/awei-voice/",
+   "pushed": "2026-08-19",
+   "district": "tools"
+  },
+  {
+   "name": "bye-bg",
+   "desc": "瀏覽器去背 — AI 模型在瀏覽器裡跑,圖片不上傳、免排隊、免註冊。商品照一鍵換白底。",
+   "stars": 1,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/bye-bg",
+   "home": "https://yazelin.github.io/bye-bg/",
+   "pushed": "2026-08-18",
+   "district": "tools"
+  },
+  {
+   "name": "cad-agent",
+   "desc": "AI 3D modeling: describe a part, claude writes a parametric FreeCAD script, see ",
+   "stars": 1,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/cad-agent",
+   "home": "",
+   "pushed": "2026-08-18",
+   "district": "company"
+  },
+  {
+   "name": "cast-lock-skill",
+   "desc": "連載插畫／漫畫的角色一致性技能——讓 AI 生成的角色不跑偏",
+   "stars": 1,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/cast-lock-skill",
+   "home": "",
+   "pushed": "2026-08-21",
+   "district": "agents"
+  },
+  {
+   "name": "claude-auth-switcher",
+   "desc": "Manage multiple Claude Code subscription accounts on one machine — switch active",
+   "stars": 1,
+   "lang": "Shell",
+   "url": "https://github.com/yazelin/claude-auth-switcher",
+   "home": "https://yazelin.github.io/claude-auth-switcher/",
+   "pushed": "2026-08-18",
+   "district": "agents"
+  },
+  {
+   "name": "codex-image-service",
+   "desc": "Personal homelab FastAPI wrapper around Codex CLI $imagegen. Not affiliated with",
+   "stars": 1,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/codex-image-service",
+   "home": "https://yazelin.github.io/codex-image-service/",
+   "pushed": "2026-08-18",
+   "district": "agents"
+  },
+  {
+   "name": "comic-studio",
+   "desc": "AI 漫畫製作工作台——小說章節到 PWA 漫畫電子書,純前端、BYO-key",
+   "stars": 1,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/comic-studio",
+   "home": "",
+   "pushed": "2026-08-19",
+   "district": "tools"
+  },
+  {
+   "name": "erpnext",
+   "desc": "ERPNext Docker with Traditional Chinese translations",
+   "stars": 1,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/erpnext",
+   "home": "",
+   "pushed": "2026-01-30",
+   "district": "company"
+  },
+  {
+   "name": "fishtool-tw",
+   "desc": "紅海釣具店 fishtool.tw — 從 IIS + Classic ASP frameset 重建的現代化 Astro v5 靜態站。20K+ 商品、164",
+   "stars": 1,
+   "lang": "Astro",
+   "url": "https://github.com/yazelin/fishtool-tw",
+   "home": "https://fishtool-tw.vercel.app/",
+   "pushed": "2026-07-22",
+   "district": "company"
+  },
+  {
+   "name": "gemini-image-starter",
+   "desc": "Learn AI image generation with Google Gemini — from a naive one-line prompt to s",
+   "stars": 1,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/gemini-image-starter",
+   "home": "https://yazelin.github.io/gemini-image-starter/",
+   "pushed": "2026-07-15",
+   "district": "teaching"
+  },
+  {
+   "name": "gemini-web",
+   "desc": "Gemini AI 圖片生成 CLI 工具 + HTTP API — 支援繁體中文文字、自動去水印",
+   "stars": 1,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/gemini-web",
+   "home": "",
+   "pushed": "2026-09-18",
+   "district": "agents"
+  },
+  {
+   "name": "glitch-park-gacha",
+   "desc": "格莉奇遊樂園・扭蛋機（three.js，獨立小遊戲，供 Larch VN 嵌入）",
+   "stars": 1,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/glitch-park-gacha",
+   "home": "https://yazelin.github.io/glitch-park-gacha/",
+   "pushed": "2026-09-21",
+   "district": "games"
+  },
+  {
+   "name": "glitch-vn",
+   "desc": "《格莉奇與黑洞先生》：一天一圈的繁體中文視覺小說。她的記憶體只有 4KB，每天睡醒清空；你是她的外接記憶體。含建置工具、驗證腳本與說明書產生器。",
+   "stars": 1,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/glitch-vn",
+   "home": "https://yazelin.github.io/glitch-vn/",
+   "pushed": "2026-09-21",
+   "district": "characters"
+  },
+  {
+   "name": "linebot-ai-starter",
+   "desc": "Starter template for LINE Messaging API bots with AI provider adapters and FastA",
+   "stars": 1,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/linebot-ai-starter",
+   "home": "https://yazelin.github.io/linebot-ai-starter/",
+   "pushed": "2026-07-06",
+   "district": "teaching"
+  },
+  {
+   "name": "mandarin-hakka",
+   "desc": "離線優先的華語／臺灣客語六腔辭典、官方發音與隨機挑戰 PWA",
+   "stars": 1,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/mandarin-hakka",
+   "home": "https://yazelin.github.io/mandarin-hakka/",
+   "pushed": "2026-08-19",
+   "district": "tools"
+  },
+  {
+   "name": "marketing-page-checker",
+   "desc": "行銷頁健檢器 — 貼上網址,看你的活動頁做得好不好(OG/SEO/CTA/速度/體質/追蹤)",
+   "stars": 1,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/marketing-page-checker",
+   "home": "",
+   "pushed": "2026-09-02",
+   "district": "tools"
+  },
+  {
+   "name": "mcp-server-starter",
+   "desc": "Dependency-light MCP server starter for learning JSON-RPC tools, workspace bound",
+   "stars": 1,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/mcp-server-starter",
+   "home": "https://yazelin.github.io/mcp-server-starter/",
+   "pushed": "2026-07-06",
+   "district": "teaching"
+  },
+  {
+   "name": "mori-ear",
+   "desc": "Mori 的耳朵 — Whisper / ASR 模組(forest universe)",
+   "stars": 1,
+   "lang": "Rust",
+   "url": "https://github.com/yazelin/mori-ear",
+   "home": "https://yazelin.github.io/mori-ear/",
+   "pushed": "2026-09-14",
+   "district": "characters"
+  },
+  {
+   "name": "nanobanana-py",
+   "desc": "Python MCP server for AI-powered image generation using Google Gemini models - A",
+   "stars": 1,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/nanobanana-py",
+   "home": "",
+   "pushed": "2026-04-20",
+   "district": "agents"
+  },
+  {
+   "name": "openclaw-claude-cli-fix",
+   "desc": "Wrapper to let OpenClaw use Claude Max subscription via claude-cli without hitti",
+   "stars": 1,
+   "lang": "Shell",
+   "url": "https://github.com/yazelin/openclaw-claude-cli-fix",
+   "home": "",
+   "pushed": "2026-04-10",
+   "district": "agents"
+  },
+  {
+   "name": "personal-brand-site-starter",
+   "desc": "把一個人的話問出來，做成一頁式的個人品牌網站。給 AI 代理人照著跑的四階段流程：訪談、選型、建站、驗收。零依賴，四種風格，四種會流動的首屏。",
+   "stars": 1,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/personal-brand-site-starter",
+   "home": "",
+   "pushed": "2026-09-02",
+   "district": "teaching"
+  },
+  {
+   "name": "printer-mcp",
+   "desc": "MCP server for printer control via CUPS",
+   "stars": 1,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/printer-mcp",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "company"
+  },
+  {
+   "name": "ralph-any",
+   "desc": "Ralph Wiggum Loop — iterative AI dev loop via ACP (supports Claude, Gemini, and ",
+   "stars": 1,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/ralph-any",
+   "home": "",
+   "pushed": "2026-02-08",
+   "district": "agents"
+  },
+  {
+   "name": "skull-cam-toy",
+   "desc": "一根手搖軸、四片凸輪、四個動作的木製凸輪機構玩具。起因是一份 AI 產生的裁切樣板圖面完整但機構轉不動,這是重新推導、逐項驗證過的版本,含 3D 模擬與可直接下",
+   "stars": 1,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/skull-cam-toy",
+   "home": "https://yazelin.github.io/skull-cam-toy/",
+   "pushed": "2026-08-20",
+   "district": "games"
+  },
+  {
+   "name": "taigi-news-reader",
+   "desc": "非商用 Chrome 台語新聞朗讀器：hosted backend、MMS TTS reference、長輩友善介面",
+   "stars": 1,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/taigi-news-reader",
+   "home": "https://yazelin.github.io/taigi-news-reader/",
+   "pushed": "2026-08-18",
+   "district": "tools"
+  },
+  {
+   "name": "usc2015",
+   "desc": "實踐創意互動導覽行動平台人才培育學程 - 導覽路線規劃功能之實作 課程 http://yazelin.github.io/usc2015/",
+   "stars": 1,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/usc2015",
+   "home": "",
+   "pushed": "2019-03-22",
+   "district": "teaching"
+  },
+  {
+   "name": "web-effects-collector",
+   "desc": "網頁特效蒐集器 — 90 個開源網頁特效彙整 + Playground(純靜態 GitHub Pages)",
+   "stars": 1,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/web-effects-collector",
+   "home": "https://yazelin.github.io/web-effects-collector/",
+   "pushed": "2026-08-18",
+   "district": "tools"
+  },
+  {
+   "name": "QRCodeScanner",
+   "desc": "1922QRCodeScanner 實聯制掃瞄器",
+   "stars": 0,
+   "lang": "",
+   "url": "https://github.com/yazelin/QRCodeScanner",
+   "home": "https://yazelin.github.io/QRCodeScanner/",
+   "pushed": "2026-06-11",
+   "district": "teaching"
+  },
+  {
+   "name": "ai-brain-site",
+   "desc": "格莉奇OS：只有 4KB 記憶體的 AI 機器人女孩 WebOS／PWA，支援 LINE 風格聊天與長期記憶、專屬音樂視覺播放器、桌面／手機 OS、AI 日記插",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/ai-brain-site",
+   "home": "https://yazelin.github.io/ai-brain-site/",
+   "pushed": "2026-09-28",
+   "district": "characters"
+  },
+  {
+   "name": "ai-comic-starter",
+   "desc": "用 AI 自動出漫畫的產線樣板：填兩把金鑰就出一話,附網站與驗收工具。附的作品《格莉奇OS》就是它自己跑出來的",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/ai-comic-starter",
+   "home": "https://yazelin.github.io/ai-comic-starter/",
+   "pushed": "2026-08-25",
+   "district": "characters"
+  },
+  {
+   "name": "ai-crew-lab",
+   "desc": "拆開 LINE 對話製造機的 AI 產線：編劇、評審、執行、美術指導、生圖五個角色怎麼分工。真實跑程重播，零金鑰。",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/ai-crew-lab",
+   "home": "",
+   "pushed": "2026-08-18",
+   "district": "tools"
+  },
+  {
+   "name": "ai-digest-tg",
+   "desc": "",
+   "stars": 0,
+   "lang": "TypeScript",
+   "url": "https://github.com/yazelin/ai-digest-tg",
+   "home": "https://yazelin.github.io/ai-digest-tg/",
+   "pushed": "2026-06-11",
+   "district": "agents"
+  },
+  {
+   "name": "ai-goal-grid-course",
+   "desc": "AI 互動行銷頁實戰 — 目標九宮格:訪客用 AI 填九宮格、生成專屬桌布、自然留下 email 的完整行銷漏斗課程",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/ai-goal-grid-course",
+   "home": "",
+   "pushed": "2026-08-06",
+   "district": "teaching"
+  },
+  {
+   "name": "ai-sticker-starter",
+   "desc": "Learn to turn one AI-generated grid into a LINE sticker pack: split, chroma-key ",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/ai-sticker-starter",
+   "home": "https://yazelin.github.io/ai-sticker-starter/",
+   "pushed": "2026-07-15",
+   "district": "teaching"
+  },
+  {
+   "name": "asia2020-RobotSim",
+   "desc": "亞洲大學-創意設計學院人工智慧工作坊 KUKA工業機器手臂3D動畫模擬與操作 RobotSim",
+   "stars": 0,
+   "lang": "",
+   "url": "https://github.com/yazelin/asia2020-RobotSim",
+   "home": "https://yazelin.github.io/asia2020-RobotSim/",
+   "pushed": "2026-06-11",
+   "district": "teaching"
+  },
+  {
+   "name": "asr-ime-fcitx",
+   "desc": "",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/asr-ime-fcitx",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "agents"
+  },
+  {
+   "name": "aw-runner",
+   "desc": "",
+   "stars": 0,
+   "lang": "Shell",
+   "url": "https://github.com/yazelin/aw-runner",
+   "home": "https://yazelin.github.io/aw-runner/",
+   "pushed": "2026-06-11",
+   "district": "agents"
+  },
+  {
+   "name": "aw-telegram-bot",
+   "desc": "",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/aw-telegram-bot",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "agents"
+  },
+  {
+   "name": "blender-product-render",
+   "desc": "",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/blender-product-render",
+   "home": "",
+   "pushed": "2026-06-23",
+   "district": "company"
+  },
+  {
+   "name": "byok-tg-runner",
+   "desc": "",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/byok-tg-runner",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "agents"
+  },
+  {
+   "name": "ching-tech-metereye",
+   "desc": "MeterEye: AI indicator light & alarm detection | AI 指示燈/警報燈偵測",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/ching-tech-metereye",
+   "home": "",
+   "pushed": "2026-01-19",
+   "district": "company"
+  },
+  {
+   "name": "ching-tech-os-skillhub",
+   "desc": "CTOS SkillHub - Skill registry for Ching Tech OS (ClawHub compatible)",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/ching-tech-os-skillhub",
+   "home": "",
+   "pushed": "2026-02-10",
+   "district": "company"
+  },
+  {
+   "name": "ching-tech-os-skills",
+   "desc": "AgentSkills for ChingTech OS AI assistant",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/ching-tech-os-skills",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "company"
+  },
+  {
+   "name": "city-monster-universe",
+   "desc": "",
+   "stars": 0,
+   "lang": "",
+   "url": "https://github.com/yazelin/city-monster-universe",
+   "home": "https://yazelin.github.io/city-monster-universe/",
+   "pushed": "2026-08-15",
+   "district": "characters"
+  },
+  {
+   "name": "clawbit",
+   "desc": "Cross-platform desktop pet that reacts to Claude Code activity",
+   "stars": 0,
+   "lang": "Rust",
+   "url": "https://github.com/yazelin/clawbit",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "characters"
+  },
+  {
+   "name": "clawpet",
+   "desc": "OpenClaw pet companion skill and CLI, catime-compatible.",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/clawpet",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "characters"
+  },
+  {
+   "name": "cnu2016",
+   "desc": "嘉南藥理大學課程 https://yazelin.github.io/cnu2016/",
+   "stars": 0,
+   "lang": "CSS",
+   "url": "https://github.com/yazelin/cnu2016",
+   "home": "",
+   "pushed": "2019-03-22",
+   "district": "teaching"
+  },
+  {
+   "name": "cnu2017",
+   "desc": "嘉藥2017Unity課程 https://yazelin.github.io/cnu2017/",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/cnu2017",
+   "home": "",
+   "pushed": "2019-03-22",
+   "district": "teaching"
+  },
+  {
+   "name": "cnu2018-RobotSim",
+   "desc": "嘉藥-互動科技-Unity-RobotSim",
+   "stars": 0,
+   "lang": "",
+   "url": "https://github.com/yazelin/cnu2018-RobotSim",
+   "home": "https://yazelin.github.io/cnu2018-RobotSim/",
+   "pushed": "2024-04-24",
+   "district": "teaching"
+  },
+  {
+   "name": "comfyui-ltc-guide",
+   "desc": "🎬 ComfyUI + LTX 2.3 完整教學 | AMD AI MAX+ 395 影片生成指南",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/comfyui-ltc-guide",
+   "home": "",
+   "pushed": "2026-03-23",
+   "district": "teaching"
+  },
+  {
+   "name": "company-ai-assistant-template",
+   "desc": "Internal company AI assistant template with FastAPI, SQLite document indexing, r",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/company-ai-assistant-template",
+   "home": "https://yazelin.github.io/company-ai-assistant-template/",
+   "pushed": "2026-07-06",
+   "district": "company"
+  },
+  {
+   "name": "cutout-skill",
+   "desc": "平底色去背 skill:選底色、keying、despill、驗收。給 Claude Code / Codex 等 agent 用。",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/cutout-skill",
+   "home": "",
+   "pushed": "2026-08-21",
+   "district": "agents"
+  },
+  {
+   "name": "defensive-tone-bot",
+   "desc": "LINE Bot:偵測聊天中的防衛性語句,翻譯成底層需求,以友善/幽默/正式三語氣回覆。願望池 #35 實作。",
+   "stars": 0,
+   "lang": "TypeScript",
+   "url": "https://github.com/yazelin/defensive-tone-bot",
+   "home": "",
+   "pushed": "2026-08-18",
+   "district": "agents"
+  },
+  {
+   "name": "div-smash",
+   "desc": "貼一個網址,把它切成一塊塊碎片打爛——碎片依真實物理掉落、翻滾、堆疊",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/div-smash",
+   "home": "https://yazelin.github.io/div-smash/",
+   "pushed": "2026-08-18",
+   "district": "games"
+  },
+  {
+   "name": "dotnet10-csharp-file-demo",
+   "desc": "這是一個不需建置流程的純靜態單頁網站，介紹如何使用 .NET 10 直接執行單一 C# 檔案。",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/dotnet10-csharp-file-demo",
+   "home": "https://yazelin.github.io/dotnet10-csharp-file-demo/",
+   "pushed": "2026-07-30",
+   "district": "teaching"
+  },
+  {
+   "name": "drive-folio",
+   "desc": "開一台車在 3D 世界裡逛 Yaze Lin 的作品（改自 Bruno Simon folio-2019，MIT）",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/drive-folio",
+   "home": "https://yazelin.github.io/drive-folio/",
+   "pushed": "2026-09-29",
+   "district": "games"
+  },
+  {
+   "name": "duck-who",
+   "desc": "《鴨子探索：是誰？》（陳怡珊）的遊玩重建筆記：故事還原、被撕掉的日記、完整攻略",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/duck-who",
+   "home": "",
+   "pushed": "2026-09-18",
+   "district": "tools"
+  },
+  {
+   "name": "f5-voice-loop",
+   "desc": "Voice dialogue loop powered by F5-TTS (Flow Matching, ~2GB VRAM) with zero-shot ",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/f5-voice-loop",
+   "home": "",
+   "pushed": "2026-09-03",
+   "district": "agents"
+  },
+  {
+   "name": "gemini-watermark-cleaner",
+   "desc": "Browser-based Gemini image watermark cleaner with LINE workshop branding",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/gemini-watermark-cleaner",
+   "home": "https://yazelin.github.io/gemini-watermark-cleaner/",
+   "pushed": "2026-08-03",
+   "district": "tools"
+  },
+  {
+   "name": "gewu-jianghu-web",
+   "desc": "武俠懸疑包裝的物理解題 RPG 網頁版,可離線遊玩、可安裝。原作 @changyi123456(物理老師),網頁移植 by yazelin。",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/gewu-jianghu-web",
+   "home": "https://yazelin.github.io/gewu-jianghu-web/",
+   "pushed": "2026-08-19",
+   "district": "games"
+  },
+  {
+   "name": "glitch-2d",
+   "desc": "Glitch Live2D Cubism 5.0 model, editable rig, and interactive showcase",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/glitch-2d",
+   "home": "https://yazelin.github.io/glitch-2d/",
+   "pushed": "2026-09-24",
+   "district": "characters"
+  },
+  {
+   "name": "glitch-3d",
+   "desc": "Glitch character 3D prototype and interactive GitHub Pages viewer",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/glitch-3d",
+   "home": "https://yazelin.github.io/glitch-3d/",
+   "pushed": "2026-09-09",
+   "district": "characters"
+  },
+  {
+   "name": "glitch-live",
+   "desc": "《格莉奇與黑洞先生・調查篇》手機直播頁的畫面原型:假載入接無縫循環影片,遊戲主播風介面,底部實心蓋掉生成浮水印",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/glitch-live",
+   "home": "",
+   "pushed": "2026-09-17",
+   "district": "characters"
+  },
+  {
+   "name": "glitch-music",
+   "desc": "格莉奇的專屬音樂播放器 PWA:可安裝、離線播放、螢幕關閉繼續唱",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/glitch-music",
+   "home": "https://yazelin.github.io/glitch-music/",
+   "pushed": "2026-09-08",
+   "district": "characters"
+  },
+  {
+   "name": "glitch-park-claw",
+   "desc": "A touch-friendly Three.js claw machine in Glitch Park, with collectible characte",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/glitch-park-claw",
+   "home": "https://yazelin.github.io/glitch-park-claw/",
+   "pushed": "2026-09-21",
+   "district": "games"
+  },
+  {
+   "name": "glitch-park-pinball",
+   "desc": "格莉奇遊樂園的獨立霓虹鋼珠台，具備鋼珠物理、角色碰撞柱與手機擋板控制。",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/glitch-park-pinball",
+   "home": "https://yazelin.github.io/glitch-park-pinball/",
+   "pushed": "2026-09-21",
+   "district": "games"
+  },
+  {
+   "name": "glitch-park-slots",
+   "desc": "格莉奇遊樂園的獨立 3D 777 拉霸遊戲，支援觸控、鍵盤、音效與角色收藏。",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/glitch-park-slots",
+   "home": "https://yazelin.github.io/glitch-park-slots/",
+   "pushed": "2026-09-21",
+   "district": "games"
+  },
+  {
+   "name": "glitch-park-wheel",
+   "desc": "格莉奇遊樂園的獨立幸運轉盤遊戲，旋轉指針抽出角色並保存收藏。",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/glitch-park-wheel",
+   "home": "https://yazelin.github.io/glitch-park-wheel/",
+   "pushed": "2026-09-21",
+   "district": "games"
+  },
+  {
+   "name": "glitch-voice-server",
+   "desc": "Glitch AI voice server powered by F5-TTS, Cloudflare Tunnel, and full-duplex bar",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/glitch-voice-server",
+   "home": "",
+   "pushed": "2026-09-03",
+   "district": "characters"
+  },
+  {
+   "name": "herdr-skill",
+   "desc": "用 herdr 派另一個 AI agent 去做事的 skill,對 herdr 0.8.0 實測",
+   "stars": 0,
+   "lang": "Shell",
+   "url": "https://github.com/yazelin/herdr-skill",
+   "home": "",
+   "pushed": "2026-09-10",
+   "district": "agents"
+  },
+  {
+   "name": "hermes-claude-cli-bridge",
+   "desc": "",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/hermes-claude-cli-bridge",
+   "home": "",
+   "pushed": "2026-04-23",
+   "district": "agents"
+  },
+  {
+   "name": "hey-mori",
+   "desc": "「Hey Mori」喚醒詞模型 — openWakeWord-trained ONNX + sklearn verifier,給 yazelin/mori-de",
+   "stars": 0,
+   "lang": "",
+   "url": "https://github.com/yazelin/hey-mori",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "characters"
+  },
+  {
+   "name": "icemore",
+   "desc": "icemore website http://yazelin.github.io/icemore/",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/icemore",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "teaching"
+  },
+  {
+   "name": "icemore2",
+   "desc": "icemore網站第2版，單頁式 http://yazelin.github.io/icemore2/",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/icemore2",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "teaching"
+  },
+  {
+   "name": "ikapcdemo",
+   "desc": "Single-shot capture for I-Tek / MORITEX USB3 Vision cameras via vendor IKapC SDK",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/ikapcdemo",
+   "home": "",
+   "pushed": "2026-07-14",
+   "district": "company"
+  },
+  {
+   "name": "image-bed",
+   "desc": "個人圖床 - 圖片存放在 GitHub Releases，不佔 repo 空間",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/image-bed",
+   "home": "https://yazelin.github.io/image-bed/",
+   "pushed": "2026-06-11",
+   "district": "agents"
+  },
+  {
+   "name": "industrial-ai-dashboard-starter",
+   "desc": "Realtime industrial dashboard starter with FastAPI WebSocket, simulated AGV/mach",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/industrial-ai-dashboard-starter",
+   "home": "https://yazelin.github.io/industrial-ai-dashboard-starter/",
+   "pushed": "2026-07-06",
+   "district": "company"
+  },
+  {
+   "name": "invisible-watermark-lab",
+   "desc": "隱形浮水印實驗室 — 產生金鑰、蓋在作品上、驗給自己看、試著偽造、把它弄壞。整套演算法邊玩邊看懂，全在瀏覽器裡跑。",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/invisible-watermark-lab",
+   "home": "https://yazelin.github.io/invisible-watermark-lab/",
+   "pushed": "2026-08-18",
+   "district": "tools"
+  },
+  {
+   "name": "j303",
+   "desc": "林亞澤的個人 AI lab / 範本與做法分享",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/j303",
+   "home": "https://yazelin.github.io/j303/",
+   "pushed": "2026-06-15",
+   "district": "teaching"
+  },
+  {
+   "name": "jaba-line-bot",
+   "desc": "LINE Bot for Jaba group lunch ordering | 呷爸午餐點餐 LINE Bot",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/jaba-line-bot",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "company"
+  },
+  {
+   "name": "jsonp.js",
+   "desc": "jsonp輕量級函式套件",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/jsonp.js",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "teaching"
+  },
+  {
+   "name": "k-rider",
+   "desc": "K 線騎手 K-Rider 騎機車衝真實股價 K 線的網頁小遊戲。台股紅漲綠跌、美股綠漲紅跌，騎過歷史大波動日的事件路牌，摔車後被 AI 嘴一句。",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/k-rider",
+   "home": "https://yazelin.github.io/k-rider/",
+   "pushed": "2026-09-29",
+   "district": "games"
+  },
+  {
+   "name": "kokoro-voice-loop",
+   "desc": "Ultra-fast voice dialogue loop with Kokoro-82M ONNX (pure CPU, <100ms) with voic",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/kokoro-voice-loop",
+   "home": "",
+   "pushed": "2026-08-28",
+   "district": "agents"
+  },
+  {
+   "name": "larch-slide-deck",
+   "desc": "Larch 視覺小說平台的簡報插件卡：Markdown 型標記寫一整份 16:9 簡報，N 備註、P 主控台、手機遙控、嵌站",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/larch-slide-deck",
+   "home": "",
+   "pushed": "2026-09-09",
+   "district": "tools"
+  },
+  {
+   "name": "larch-story-studio-skill",
+   "desc": "",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/larch-story-studio-skill",
+   "home": "",
+   "pushed": "2026-09-10",
+   "district": "agents"
+  },
+  {
+   "name": "larch-taoyuan-canon",
+   "desc": "《咒泉鄉的桃園三結義》的正典資料集:哪些取自三國演義、哪些我們改了、哪些是我們自己編的",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/larch-taoyuan-canon",
+   "home": "https://yazelin.github.io/larch-taoyuan-canon/",
+   "pushed": "2026-09-09",
+   "district": "characters"
+  },
+  {
+   "name": "larch-taoyuan-voice",
+   "desc": "《咒泉鄉》系列視覺小說的配音音檔，給 Larch 用 jsDelivr 取用",
+   "stars": 0,
+   "lang": "",
+   "url": "https://github.com/yazelin/larch-taoyuan-voice",
+   "home": "",
+   "pushed": "2026-09-22",
+   "district": "characters"
+  },
+  {
+   "name": "line-sticker",
+   "desc": "",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/line-sticker",
+   "home": "https://yazelin.github.io/line-sticker/",
+   "pushed": "2026-06-11",
+   "district": "tools"
+  },
+  {
+   "name": "line-sticker-wall",
+   "desc": "貼圖實作營即時成果牆：上傳 LINE 套組 ZIP，全場同步預覽。",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/line-sticker-wall",
+   "home": "https://yazelin.github.io/line-sticker-wall/",
+   "pushed": "2026-08-18",
+   "district": "tools"
+  },
+  {
+   "name": "link-kit",
+   "desc": "行銷連結工具 — UTM 加 QR 一條龍,勾通路一次產出全部追蹤連結。免費、免註冊、零後端。",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/link-kit",
+   "home": "https://yazelin.github.io/link-kit/",
+   "pushed": "2026-08-18",
+   "district": "tools"
+  },
+  {
+   "name": "lrt-example",
+   "desc": "輕軌路線圖範例",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/lrt-example",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "teaching"
+  },
+  {
+   "name": "ltx-cli",
+   "desc": "🎬 Command-line video generation tool using LTX API",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/ltx-cli",
+   "home": "",
+   "pushed": "2026-03-22",
+   "district": "agents"
+  },
+  {
+   "name": "lucky-wheel",
+   "desc": "抽獎轉盤 — 貼上 FB 留言一鍵洗名單,全螢幕轉盤抽獎。免費、無廣告、名單不上傳。",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/lucky-wheel",
+   "home": "https://yazelin.github.io/lucky-wheel/",
+   "pushed": "2026-08-18",
+   "district": "tools"
+  },
+  {
+   "name": "marketing-toolbox",
+   "desc": "行銷工具箱 — 免費、免註冊即用的行銷線上小工具書籤站",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/marketing-toolbox",
+   "home": "https://yazelin.github.io/marketing-toolbox/",
+   "pushed": "2026-08-18",
+   "district": "tools"
+  },
+  {
+   "name": "meltan-404-bot",
+   "desc": "",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/meltan-404-bot",
+   "home": "",
+   "pushed": "2026-08-18",
+   "district": "characters"
+  },
+  {
+   "name": "mori-field-notes",
+   "desc": "🌲 Mori's Field Notes — AI 精靈的田野筆記。技術觀察、開發心得、趨勢分析。由 AI 自主運營的知識站。",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/mori-field-notes",
+   "home": "https://yazelin.github.io/mori-field-notes/",
+   "pushed": "2026-09-28",
+   "district": "characters"
+  },
+  {
+   "name": "mori-meeting-recorder",
+   "desc": "Standalone dual-track meeting recorder for the Mori universe (Observer Mode MVP)",
+   "stars": 0,
+   "lang": "Rust",
+   "url": "https://github.com/yazelin/mori-meeting-recorder",
+   "home": "https://yazelin.github.io/mori-meeting-recorder/",
+   "pushed": "2026-08-18",
+   "district": "characters"
+  },
+  {
+   "name": "msi-fan",
+   "desc": "",
+   "stars": 0,
+   "lang": "Rust",
+   "url": "https://github.com/yazelin/msi-fan",
+   "home": "",
+   "pushed": "2026-08-10",
+   "district": "company"
+  },
+  {
+   "name": "mycelium",
+   "desc": "長篇小說 / IP 創作輔助工具：世界觀設定（含別名）、人物關係圖、大綱、伏筆追蹤、多 provider AI 輔助。純前端、無 build、可放 GitHub",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/mycelium",
+   "home": "",
+   "pushed": "2026-08-18",
+   "district": "tools"
+  },
+  {
+   "name": "nanobanana-pro",
+   "desc": "AI Image Generation Agent Skill with auto model fallback | AI 圖片生成 Agent Skill（自",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/nanobanana-pro",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "agents"
+  },
+  {
+   "name": "neko-tensei",
+   "desc": "轉生成貓貓的我們——誕生於 LINE C# 社群閒聊的異世界貓貓漫畫",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/neko-tensei",
+   "home": "https://yazelin.github.io/neko-tensei/",
+   "pushed": "2026-09-09",
+   "district": "characters"
+  },
+  {
+   "name": "omotenashi-hell",
+   "desc": "〈おもてなし地獄へようこそ〉循環播放器：一首歌兩個 take、逐句動態歌詞、依段落換色的視覺特效，用來錄成 YouTube 影片",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/omotenashi-hell",
+   "home": "https://yazelin.github.io/omotenashi-hell/",
+   "pushed": "2026-09-09",
+   "district": "characters"
+  },
+  {
+   "name": "patient-9-guide",
+   "desc": "《第九號病人》（QIYUN）的讀本與全結局攻略：不玩遊戲也能從頭讀完，九個結局怎麼走全部攤開",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/patient-9-guide",
+   "home": "https://yazelin.github.io/patient-9-guide/",
+   "pushed": "2026-09-19",
+   "district": "games"
+  },
+  {
+   "name": "post-live-skill",
+   "desc": "直播與課程辦完之後的整理線:逐字稿語義校正、回補講義簡報、切段與字幕",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/post-live-skill",
+   "home": "",
+   "pushed": "2026-09-10",
+   "district": "agents"
+  },
+  {
+   "name": "promo-footer-skill",
+   "desc": "",
+   "stars": 0,
+   "lang": "Shell",
+   "url": "https://github.com/yazelin/promo-footer-skill",
+   "home": "",
+   "pushed": "2026-08-20",
+   "district": "agents"
+  },
+  {
+   "name": "promo-video-skill",
+   "desc": "把專案變成宣傳片的零成本管線 — 螢幕錄 / Ken Burns / 終端解說三種模式的 Claude Code skill",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/promo-video-skill",
+   "home": "https://yazelin.github.io/promo-video-skill/",
+   "pushed": "2026-09-09",
+   "district": "agents"
+  },
+  {
+   "name": "pwa-skill",
+   "desc": "",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/pwa-skill",
+   "home": "",
+   "pushed": "2026-08-19",
+   "district": "agents"
+  },
+  {
+   "name": "quiz-deploy-test",
+   "desc": "驗證「換題庫→推 repo→開 Pages」走得通的示範站（AI 自撰示範題，非官方）",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/quiz-deploy-test",
+   "home": "https://yazelin.github.io/quiz-deploy-test/",
+   "pushed": "2026-09-22",
+   "district": "tools"
+  },
+  {
+   "name": "render-studio",
+   "desc": "Upload a 3D file, pick studio knobs, Blender EEVEE renders a product image. Comp",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/render-studio",
+   "home": "",
+   "pushed": "2026-06-26",
+   "district": "company"
+  },
+  {
+   "name": "rushcut",
+   "desc": "",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/rushcut",
+   "home": "",
+   "pushed": "2026-07-17",
+   "district": "agents"
+  },
+  {
+   "name": "share-preview",
+   "desc": "分享卡預覽器 — FB、LINE、X、Google 分享長相一次看,改欄位即時更新,一鍵複製 meta 標籤。",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/share-preview",
+   "home": "https://yazelin.github.io/share-preview/",
+   "pushed": "2026-08-18",
+   "district": "tools"
+  },
+  {
+   "name": "shorturl-worker",
+   "desc": "PromptFill 短網址服務 - Cloudflare Workers + KV",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/shorturl-worker",
+   "home": "",
+   "pushed": "2026-08-21",
+   "district": "agents"
+  },
+  {
+   "name": "slide-background-research",
+   "desc": "簡報背景圖的做法研究：尺度失衡、光、提示詞四段結構、靜態轉動態",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/slide-background-research",
+   "home": "",
+   "pushed": "2026-09-01",
+   "district": "teaching"
+  },
+  {
+   "name": "speak-skill",
+   "desc": "",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/speak-skill",
+   "home": "",
+   "pushed": "2026-07-16",
+   "district": "agents"
+  },
+  {
+   "name": "speak-tw",
+   "desc": "講人話：用程式掃中文寫作的老毛病。零相依 CLI，任何 agent 都能跑。",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/speak-tw",
+   "home": "",
+   "pushed": "2026-09-25",
+   "district": "agents"
+  },
+  {
+   "name": "suno-web",
+   "desc": "Suno 網頁自動化：job 式音樂生成 API 與 CLI",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/suno-web",
+   "home": "",
+   "pushed": "2026-09-03",
+   "district": "agents"
+  },
+  {
+   "name": "taiwan-people",
+   "desc": "",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/taiwan-people",
+   "home": "https://yazelin.github.io/taiwan-people/",
+   "pushed": "2026-09-03",
+   "district": "characters"
+  },
+  {
+   "name": "telegram-ai-agent-starter",
+   "desc": "Starter template for building Telegram AI agents with FastAPI, CLI/HTTP LLM prov",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/telegram-ai-agent-starter",
+   "home": "https://yazelin.github.io/telegram-ai-agent-starter/",
+   "pushed": "2026-07-06",
+   "district": "teaching"
+  },
+  {
+   "name": "telegram-bot-claude-acp",
+   "desc": "Telegram bot integrated with Claude AI via claude-code-acp",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/telegram-bot-claude-acp",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "agents"
+  },
+  {
+   "name": "telegram-claude-bot",
+   "desc": "Minimal Telegram AI bot powered by Claude Code CLI — companion to telegram-gemin",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/telegram-claude-bot",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "agents"
+  },
+  {
+   "name": "telegram-copilot-bot",
+   "desc": "Telegram chatbot powered by Copilot CLI on GitHub Actions (no gh-aw)",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/telegram-copilot-bot",
+   "home": "https://yazelin.github.io/telegram-copilot-bot/",
+   "pushed": "2026-06-11",
+   "district": "agents"
+  },
+  {
+   "name": "telegram-gemini-bot",
+   "desc": "",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/telegram-gemini-bot",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "agents"
+  },
+  {
+   "name": "tiny-harness",
+   "desc": "一支極小的 agent loop：Node 核心終端機與瀏覽器共用，外加一支只要 curl 與 jq 的 bash 版",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/tiny-harness",
+   "home": "",
+   "pushed": "2026-09-18",
+   "district": "agents"
+  },
+  {
+   "name": "token-unlimited",
+   "desc": "《轉生異世界的我 token 無限》線上試閱｜連載中",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/token-unlimited",
+   "home": "https://yazelin.github.io/token-unlimited/",
+   "pushed": "2026-09-02",
+   "district": "characters"
+  },
+  {
+   "name": "token-unlimited-comic",
+   "desc": "《轉生異世界的我 token 無限》漫畫版——直式條漫線上讀",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/token-unlimited-comic",
+   "home": "",
+   "pushed": "2026-08-19",
+   "district": "characters"
+  },
+  {
+   "name": "tts-skill",
+   "desc": "",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/tts-skill",
+   "home": "",
+   "pushed": "2026-08-22",
+   "district": "agents"
+  },
+  {
+   "name": "ubuntu-26.04-setup",
+   "desc": "Personal notes and scripts for things I configured after a fresh Ubuntu 26.04 LT",
+   "stars": 0,
+   "lang": "Shell",
+   "url": "https://github.com/yazelin/ubuntu-26.04-setup",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "teaching"
+  },
+  {
+   "name": "url-no-trace",
+   "desc": "",
+   "stars": 0,
+   "lang": "JavaScript",
+   "url": "https://github.com/yazelin/url-no-trace",
+   "home": "",
+   "pushed": "2026-09-11",
+   "district": "agents"
+  },
+  {
+   "name": "usc2016hci",
+   "desc": "實踐大學人機互動技術與應用課程 https://yazelin.github.io/usc2016hci/",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/usc2016hci",
+   "home": "",
+   "pushed": "2019-03-22",
+   "district": "teaching"
+  },
+  {
+   "name": "usc2016hci_ARCamera",
+   "desc": "實踐大學人機互動技術與應用課程範例-AR相機-APP Client端 https://yazelin.github.io/usc2016hci_ARCamera",
+   "stars": 0,
+   "lang": "C#",
+   "url": "https://github.com/yazelin/usc2016hci_ARCamera",
+   "home": "",
+   "pushed": "2019-03-22",
+   "district": "teaching"
+  },
+  {
+   "name": "usc2016hci_CloudAlbum",
+   "desc": "實踐大學人機互動技術與應用課程範例-雲端相簿-Web Server端",
+   "stars": 0,
+   "lang": "PHP",
+   "url": "https://github.com/yazelin/usc2016hci_CloudAlbum",
+   "home": "",
+   "pushed": "2019-03-22",
+   "district": "teaching"
+  },
+  {
+   "name": "usc2017nsp",
+   "desc": "實踐2017聯網感測實作 https://yazelin.github.io/usc2017nsp/",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/usc2017nsp",
+   "home": "",
+   "pushed": "2019-04-29",
+   "district": "teaching"
+  },
+  {
+   "name": "video-sharing",
+   "desc": "分享影片檔案的儲存庫",
+   "stars": 0,
+   "lang": "",
+   "url": "https://github.com/yazelin/video-sharing",
+   "home": "",
+   "pushed": "2026-06-11",
+   "district": "agents"
+  },
+  {
+   "name": "visordemo",
+   "desc": "",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/visordemo",
+   "home": "",
+   "pushed": "2026-07-08",
+   "district": "company"
+  },
+  {
+   "name": "voice-loop",
+   "desc": "對著麥克風講話，AI 用你自己的聲音回答你。本機 GPU whisper + CosyVoice3 voice clone + llmshare",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/voice-loop",
+   "home": "",
+   "pushed": "2026-09-03",
+   "district": "agents"
+  },
+  {
+   "name": "waiting-for-light",
+   "desc": "一首寫給系統故障與等待微光的情歌 — 單頁播放器，附中英對照動態歌詞",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/waiting-for-light",
+   "home": "",
+   "pushed": "2026-09-16",
+   "district": "characters"
+  },
+  {
+   "name": "webcamdemo",
+   "desc": "Cross-platform webcam control: full parameter enumeration (incl. Logitech hidden",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/webcamdemo",
+   "home": "",
+   "pushed": "2026-07-08",
+   "district": "company"
+  },
+  {
+   "name": "webgl-flow-simulation",
+   "desc": "WebGL Navier-Stokes fluid simulation + Canvas 2D character grid. Dark & light th",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/webgl-flow-simulation",
+   "home": "https://yazelin.github.io/webgl-flow-simulation/",
+   "pushed": "2026-06-11",
+   "district": "games"
+  },
+  {
+   "name": "wip",
+   "desc": "",
+   "stars": 0,
+   "lang": "Rust",
+   "url": "https://github.com/yazelin/wip",
+   "home": "",
+   "pushed": "2026-08-18",
+   "district": "agents"
+  },
+  {
+   "name": "workshop",
+   "desc": "🌲 Immersive isekai UI — gateway to the Forest Summoner's workshop. Zero framewor",
+   "stars": 0,
+   "lang": "CSS",
+   "url": "https://github.com/yazelin/workshop",
+   "home": "https://yazelin.github.io/workshop/",
+   "pushed": "2026-08-07",
+   "district": "characters"
+  },
+  {
+   "name": "world-tree",
+   "desc": "🌳 A shared knowledge base for an immersive isekai where you learn to partner wit",
+   "stars": 0,
+   "lang": "Shell",
+   "url": "https://github.com/yazelin/world-tree",
+   "home": "",
+   "pushed": "2026-08-07",
+   "district": "characters"
+  },
+  {
+   "name": "wwii-3d-history",
+   "desc": "",
+   "stars": 0,
+   "lang": "HTML",
+   "url": "https://github.com/yazelin/wwii-3d-history",
+   "home": "https://yazelin.github.io/wwii-3d-history/",
+   "pushed": "2026-08-18",
+   "district": "games"
+  },
+  {
+   "name": "yazelin",
+   "desc": "GitHub Profile",
+   "stars": 0,
+   "lang": "",
+   "url": "https://github.com/yazelin/yazelin",
+   "home": "",
+   "pushed": "2026-07-17",
+   "district": "agents"
+  },
+  {
+   "name": "yori-growth-log",
+   "desc": "想成為圖文作家的優理｜Yori Growth Log — 每天一篇圖文日記,雲端自動續寫,每天比昨天多一點",
+   "stars": 0,
+   "lang": "Python",
+   "url": "https://github.com/yazelin/yori-growth-log",
+   "home": "https://yazelin.github.io/yori-growth-log/",
+   "pushed": "2026-09-29",
+   "district": "characters"
+  }
+ ]
+}

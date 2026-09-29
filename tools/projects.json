@@ -1,0 +1,11 @@
+[
+ {"id":"yaze1","url":"https://yazelin.github.io/glitch-vn/","title":"格莉奇與黑洞先生","desc":"只有 4KB 記憶體的 AI 主播，開台第一天來了七個人，她說要記住每一個。七章小說，每一句都能點來聽。","role":"視覺小說","with":"Claude Code、Codex、CosyVoice"},
+ {"id":"yaze2","url":"https://yazelin.github.io/ai-brain-site/","title":"格莉奇OS","desc":"格莉奇的網頁作業系統：LINE 風格聊天、心情日記、專屬音樂，桌上還有一隻會動的她。","role":"網頁 OS、PWA","with":"Claude Code、Gemini"},
+ {"id":"yaze3","url":"https://yazelin.github.io/ipas-ai-quiz/","title":"iPAS AI 模擬考","desc":"iPAS AI 應用規劃師刷題站，890 題官方試題免費練，離線也能刷，有人用它考過了。","role":"刷題網站","with":"Claude Code、Cloudflare D1"},
+ {"id":"yaze4","url":"https://yazelin.github.io/catime/","title":"Catime","desc":"每小時自動生一隻 AI 貓，跑了八個月，累積兩千多隻的圖庫。","role":"每天自己跑","with":"GitHub Actions、Gemini"},
+ {"id":"yaze5","url":"https://yazelin.github.io/ai-chant-magic/","title":"真AI咏唱魔法","desc":"對麥克風唸咒語，AI 即時生成魔法效果的生存遊戲。","role":"語音遊戲","with":"Claude Code、Web Speech"},
+ {"id":"yaze6","url":"https://yazelin.github.io/roll-formosa/","title":"Roll Formosa","desc":"把台灣街景滾成一顆球的遊戲，四座城市上線。","role":"3D 遊戲","with":"Claude Code、three.js"},
+ {"id":"yaze7","url":"https://yazelin.github.io/k-rider/","title":"K-Rider K 線騎手","desc":"用真實股價 K 線當地形的騎乘遊戲。","role":"網頁遊戲","with":"Claude Code"},
+ {"id":"yaze8","url":"https://yazelin.github.io/battlefield-editor/","title":"AI 戰場編輯器","desc":"赤壁、官渡、垓下，六場古戰役 3D 重現，換一份資料就換一場戰役。","role":"3D 編輯器","with":"Claude Code、three.js"},
+ {"id":"yaze9","url":"https://yazelin.github.io/line-sticker-studio/","title":"LINE 貼圖製造機","desc":"上傳一張角色圖，AI 產出一整組 LINE 貼圖。","role":"AI 工具","with":"Claude Code、Gemini"}
+]

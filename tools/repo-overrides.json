@@ -1,0 +1,18 @@
+{
+ "line-chat-maker": "tools",
+ "taigi-caption": "tools",
+ "wip": "agents",
+ "yazelin": "agents",
+ "workshop": "characters",
+ "j303": "teaching",
+ "asia2020-RobotSim": "teaching",
+ "cnu2018-RobotSim": "teaching",
+ "usc2019-RobotSim": "teaching",
+ "glitch-park-gacha": "games",
+ "glitch-park-pinball": "games",
+ "glitch-park-slots": "games",
+ "glitch-park-wheel": "games",
+ "taigi-news-reader": "tools",
+ "gemini-watermark-cleaner": "tools",
+ "mycelium": "tools"
+}
