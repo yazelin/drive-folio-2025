@@ -33,18 +33,48 @@ export class SocialArea extends Area
 
     setLinks()
     {
-        const radius = 6
-        let i = 0
+        // 原作這一圈擺的是他自己的社群標誌（X、Bluesky、YouTube…），我們的連結對不上，
+        // 對不上的標誌藏起來、關掉碰撞；有對應標誌的（GitHub）連結點放在標誌旁邊，其他的放立牌
+        const logos = new Map()
+        for(const object of this.objects.items)
+        {
+            const name = object.visual?.object3D?.name || ''
+            const key = name.replace(/\d+$/, '')
+            if(/^(x|bluesky|youtube|twitch|linkedIn|discord|mail|onlyfans|gitHub)$/i.test(key))
+                logos.set(key, object)
+        }
+        const used = new Set(socialData.filter(link => link.logo).map(link => link.logo))
+        for(const [ key, object ] of logos)
+        {
+            if(used.has(key))
+                continue
+            object.visual.object3D.visible = false
+            object.physical?.body.setEnabled(false)
+        }
 
+        const radius = 6
         for(const link of socialData)
         {
-            const angle = i * Math.PI / (socialData.length - 1)
-            const position = this.center.clone()
-            position.x += Math.cos(angle) * radius
-            position.y = 1
-            position.z -= Math.sin(angle) * radius
+            let position
+            if(link.logo && logos.has(link.logo))
+            {
+                // 跟其他連結同一圈，放在標誌正前方
+                const logo = logos.get(link.logo).physical.body.translation()
+                const direction = new THREE.Vector3(logo.x - this.center.x, 0, logo.z - this.center.z).normalize()
+                position = this.center.clone().addScaledVector(direction, radius)
+                position.y = 1
+            }
+            else
+            {
+                const angle = (link.angle ?? 45) * Math.PI / 180
+                position = this.center.clone()
+                position.x += Math.cos(angle) * radius
+                position.y = 1
+                position.z -= Math.sin(angle) * radius
+                this.addSign(link, angle)
+            }
 
-            this.interactivePoint = this.game.interactivePoints.create(
+            this.game.interactivePoints.create(
                 position,
                 link.name,
                 link.align === 'left' ? InteractivePoints.ALIGN_LEFT : InteractivePoints.ALIGN_RIGHT,
@@ -53,8 +83,6 @@ export class SocialArea extends Area
                 {
                     if(link.url)
                         window.open(link.url, '_blank')
-                    else if(link.modal)
-                        this.game.modals.open(link.modal)
                 },
                 () =>
                 {
@@ -69,9 +97,40 @@ export class SocialArea extends Area
                     this.game.inputs.interactiveButtons.removeItems(['interact'])
                 }
             )
-            
-            i++
         }
+    }
+
+    // 沒有 3D 標誌的連結放一塊立牌：底色＋名字，面向鏡頭
+    addSign(link, angle)
+    {
+        const canvas = document.createElement('canvas')
+        canvas.width = 512
+        canvas.height = 512
+        const ctx = canvas.getContext('2d')
+        ctx.fillStyle = link.color
+        ctx.beginPath()
+        ctx.roundRect(16, 16, 480, 480, 90)
+        ctx.fill()
+        ctx.fillStyle = link.dark ? '#2b2118' : '#ffffff'
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'middle'
+        const lines = link.label.split('\n')
+        const size = lines.length > 1 ? 92 : 110
+        ctx.font = `900 ${size}px "Nunito", "Noto Sans TC", sans-serif`
+        lines.forEach((line, i) => ctx.fillText(line, 256, 256 + (i - (lines.length - 1) / 2) * size * 1.1))
+        const map = new THREE.CanvasTexture(canvas)
+        map.colorSpace = THREE.SRGBColorSpace
+
+        const sign = new THREE.Mesh(
+            new THREE.PlaneGeometry(1.6, 1.6).translate(0, 0.8, 0),
+            new THREE.MeshBasicNodeMaterial({ map, alphaTest: 0.5, side: THREE.DoubleSide })
+        )
+        const position = this.center.clone()
+        position.x += Math.cos(angle) * 7.85
+        position.z -= Math.sin(angle) * 7.85
+        sign.position.set(position.x, 0.3, position.z)   // 站在原作的空石座上
+        sign.rotation.y = Math.PI * 0.25
+        this.game.scene.add(sign)
     }
 
     setFans()
