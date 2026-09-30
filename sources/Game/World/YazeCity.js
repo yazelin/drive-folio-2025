@@ -23,6 +23,8 @@ const GLASS_WARM = '#5a4a6e'
 const TRIM = '#f7f1e6'
 const ASPHALT = '#4a4452'
 const SIDEWALK = '#b9ada4'
+// 六個區各一個顏色，用在樓身上，地圖上也看得出分區（直播 9/30 回饋：沒分區看不出是什麼）
+const DISTRICT_COLORS = { company: '#8fb8de', characters: '#e8a6c4', games: '#a6d69a', teaching: '#eccb7a', agents: '#b9a6e8', tools: '#e8ad8a' }
 const LINE = '#f4efe6'
 const FACE_CAMERA = Math.PI * 0.25
 const FONT = '"Nunito", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif'
@@ -126,7 +128,10 @@ export class YazeCity
         this.cutaway = uniform(vec3(0, 0, 0))
 
         // 最近有更新的排前面
-        this.repos = [ ...repoData.repos ].sort((a, b) => (b.pushed || '').localeCompare(a.pushed || ''))
+        // 同一區排在一起，區內最近有更新的排前面
+        const order = new Map(repoData.districts.map((d, i) => [ d.id, i ]))
+        this.districtNames = new Map(repoData.districts.map(d => [ d.id, d.name ]))
+        this.repos = [ ...repoData.repos ].sort((a, b) => (order.get(a.district) - order.get(b.district)) || (b.pushed || '').localeCompare(a.pushed || ''))
 
         this.setGround()
         this.setBuildings()
@@ -213,6 +218,16 @@ export class YazeCity
                         this.island.footprints.push([ '#7fa045', lot.x, lot.z, CITY.lot - 0.4, CITY.lot - 0.4, 0.16 ])
                         continue
                     }
+                    // 每一區的第一棟，在前面的路上寫區名
+                    const lot = lotCenter(column, row, i)
+                    if(index === 0 || this.repos[index - 1].district !== repo.district)
+                    {
+                        const count = this.repos.filter(r => r.district === repo.district).length
+                        const name = this.districtNames.get(repo.district) || repo.district
+                        const labelZ = origin.z + CITY.blockDepth + CITY.road / 2
+                        this.island.floorText([ name, `${count} 個 repo` ], lot.x + 2, labelZ, 9, 2.25, '#fff4e0')
+                        this.island.mapLabels.push([ name, lot.x + 4, labelZ ])
+                    }
                     const building = this.building(repo, column, row, i)
                     const cx = (index % perRow) * cellW
                     const cy = Math.floor(index / perRow) * cellH
@@ -289,11 +304,12 @@ export class YazeCity
         const width = 3.4 + random() * 0.8
         const depth = 3.2 + random() * 0.8
         const popularity = Math.log2(1 + (repo.stars || 0))
-        const floors = Math.max(2, Math.min(8, Math.round(2 + random() * 4 + popularity * 0.8)))
+        const floors = Math.max(2, Math.min(5, Math.round(2 + random() * 2 + popularity * 0.6)))   // 上限 5 層，免得擋住後面的街
         const height = floors * 2.8 + 0.6
         const x = lot.x
         const z = lot.z - (CITY.lot - depth) * 0.5 + 0.35
-        const facade = FACADE_COLORS[Math.floor(random() * FACADE_COLORS.length)]
+        // 樓身用這一區的顏色，同區深淺略有不同，開車時一眼看得出在哪一區
+        const facade = '#' + new THREE.Color(DISTRICT_COLORS[repo.district] || FACADE_COLORS[0]).multiplyScalar(0.85 + random() * 0.25).getHexString()
         const glass = random() > 0.5 ? GLASS : GLASS_WARM
         const style = Math.floor(random() * 3)
 
